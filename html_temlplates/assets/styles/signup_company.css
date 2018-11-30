@@ -63,6 +63,14 @@ textarea {
   border: none;
 }
 
+label {
+  font-family: Poppins-Regular;
+	font-size: 14px;
+	line-height: 1.7;
+  margin: 0px;
+  color: rgba(255,255,255,0.8)
+}
+
 textarea:focus, input:focus {
   border-color: transparent;
 }
