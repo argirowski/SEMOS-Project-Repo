@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fill In Your Personal Info</title>
+	<link rel="stylesheet" type="text/css" href="assets/styles/user_details_form.css">
+</head>
+<body>
+	<header>
+		<h1>
+			Please Provide Us With The Necessary Info
+		</h1>
+		
+	</header>
+	<div class="user_details_form">
+			<form method="POST" action="">
+		<input type="text" name="first_name" placeholder="First Name"> <br>
+		<input type="text" name="last_name" placeholder="Last Name"> <br>
+		<input type="email" name="emailaddress" placeholder="Email Address" required> <br>
+		<input type="password" id="pass" name="password" placeholder="Type Your Password" required> <br>
+ 		<p>
+			Location
+		</p>
+ 		<select name="country">
+		<option value="">Country...</option>
+		<option value="AF">Afghanistan</option>
+		<option value="AL">Albania</option>
+		<option value="DZ">Algeria</option>
+		</select><br>
+ 		<select name="city">
+		<option value="">City</option>
+		<option value="SK">Skopje</option>
+		<option value="BT">Bitola</option>
+		<option value="VE">Veles</option>
+        </select></br>
+        <select name="region">  
+            <option value="">Region</option>
+            <option value="NO">North</option>
+            <option value="SO">South</option>
+            <option value="CEN">Central</option>
+            </select></br>
+
+            <input type="button" id="send-button" name="send" value="Send CV">
+        </form>
+ 	</form>
+    </div>
+ </html>
