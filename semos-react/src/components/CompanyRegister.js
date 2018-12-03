@@ -3,72 +3,72 @@ import React from 'react';
 export class CompanyRegister extends React.Component{
     render() {
         return(
-            <div class="wrapper-signup">
+            <div className="wrapper-signup">
 				
 				
-            <form class="company-signup">
+            <form className="company-signup">
                               
                                   <div>
-                                    <span class="company-signup-title">
+                                    <span className="company-signup-title">
                                       Company Registration
                                     </span>
                                   </div>
               
-                                    <div class="wrapper">
+                                    <div className="wrapper">
                                         <input type="text" required placeholder="Name"/>
-                                        <span class="highlight"></span>
-                                        <span class="bar"></span>
+                                        <span className="highlight"></span>
+                                        <span className="bar"></span>
                                         {/* <label>Name</label> */}
                                 
                                     </div>
     
-                                  <div class="wrapper">
+                                  <div className="wrapper">
                                       <input type="email" required />
-                                      <span class="highlight"></span>
-                                      <span class="bar"></span>
+                                      <span className="highlight"></span>
+                                      <span className="bar"></span>
                                       <label>Email</label>
                                   </div>
                         
                         
-                                  <div class="wrapper">
+                                  <div className="wrapper">
                                       <input type="password" required />
-                                      <span class="highlight"></span>
-                                      <span class="bar"></span>
+                                      <span className="highlight"></span>
+                                      <span className="bar"></span>
                                       <label>Password</label>
                                     </div>
   
-                                  <div class="wrapper">
+                                  <div className="wrapper">
                                       <input type="text" required />
-                                      <span class="highlight"></span>
-                                      <span class="bar"></span>
+                                      <span className="highlight"></span>
+                                      <span className="bar"></span>
                                       <label>Website</label>
                                   </div>
     
-                                  <div class="wrapper">
+                                  <div className="wrapper">
                                       <input type="text" required />
-                                      <span class="highlight"></span>
-                                      <span class="bar"></span>
+                                      <span className="highlight"></span>
+                                      <span className="bar"></span>
                                       <label>Country</label>
                                   </div>
     
     
-                                                <div class="wrapper">
+                                                <div className="wrapper">
                                                     <input type="text" required />
-                                                    <span class="highlight"></span>
-                                                    <span class="bar"></span>
+                                                    <span className="highlight"></span>
+                                                    <span className="bar"></span>
                                                     <label>City</label>
                                                 </div>
                                   
-                                                <div class="wrapper">
+                                                <div className="wrapper">
                                                     <input type="text" name="Field" required />
-                                                    <span class="highlight"></span>
-                                                    <span class="bar"></span>
+                                                    <span className="highlight"></span>
+                                                    <span className="bar"></span>
                                                     <label>Field</label>
                                                 </div>
                         
     
-                                          <div class="container-company-signup-btn">
-                                            <button class="company-signup-btn">
+                                          <div className="container-company-signup-btn">
+                                            <button className="company-signup-btn">
                                               Submit
                                             </button>
                                             </div>

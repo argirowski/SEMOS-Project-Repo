@@ -52,6 +52,7 @@
   
   nav {
     float: right;
+    display: inline-block;
   }
   
   nav ul {
@@ -160,7 +161,8 @@
   
   
   
-    .wrapper-signup {
+    .wrapper-signup, .home {
+      margin: auto; 
       width: 500px;
       background: #2169bb;
       background: -webkit-linear-gradient(45deg,  #2f6097, #dbebe381);
@@ -176,7 +178,7 @@
     }
       
   
-    .company-signup {
+    .company-signup, .home {
       width: 100%;  
       background-position: center center;
       background-size: cover;

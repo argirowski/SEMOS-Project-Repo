@@ -1,17 +1,36 @@
 import React from 'react';
+import {NavLink} from "react-router-dom";
 
 export class Nav extends React.Component{
     render() {
         return(
-        <div class="container-nav">
+        <div className="container-nav">
 
-            <nav class="nav">
+            <nav className="nav">
                 <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Log In</a></li>
-                <li><a href="#">Find a job</a></li>
-                <li><a href="#">Find emploee</a></li>
-                <li><a href="#">Contact</a></li>
+                <li>
+                    <NavLink activeClassName="active" to="/">Home</NavLink>
+                
+                </li>
+                <li>
+                    <NavLink activeClassName="active" to="/companyregister">Company Register</NavLink>
+                
+                </li>
+                <li>
+                    <NavLink activeClassName="active" to="#">Log in</NavLink>
+                </li>
+
+                <li>
+                <NavLink activeClassName="active" to="#">Find a job</NavLink>
+                </li>
+
+                <li>
+                <NavLink activeClassName="active" to="#">Find a job</NavLink>
+                </li>
+
+                <li>
+                    <NavLink activeClassName="active" to="#">Contacts</NavLink>
+                </li>
               </ul>
             </nav>
             
