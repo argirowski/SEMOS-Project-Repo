@@ -1,36 +1,324 @@
+
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+}
+
+* {
+    margin: 0px; 
+    padding: 0px; 
+    box-sizing: border-box;
+}
+
 body {
-	margin: 0;
-	padding: 0;
-	background: #FFF0F5;
+    margin: 0;
+    height: 100%;
+    font-family: Poppins-Regur, sans-serif;
+    background: #222;
 }
- header {
-    width: 100%;
-    height: 75px;
-    background: #00BFFF; 
+
+.background {
+  background-image: url("'../images/Desktop.jpg'");
 }
- h1 {
-    font-size: 50px;
-    margin:auto;
-    text-align: center;
+.container-nav {
+    width: 80%;
+    margin: 0 auto;
 }
- .cv-form {
-	margin: 15px 0 0 200px;
-	width: 100%;
-    height: 600px;
+
+header {
+  background: transparent;
+}
+
+header::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+nav {
+  float: right;
+}
+
+nav ul {
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 70px;
+  padding-top: 15px;
+  position: relative;
+}
+
+nav a {
+  color:white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color:  rgba(37, 26, 26, 0.8);
+}
+  
+a {
+font-family: Poppins-Regular;
+font-size: 14px;
+line-height: 1.7;
+color: #ddd7d7;
+  margin: 0px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 0px;
+}
+
+p {
+    font-family: Poppins-Regular;
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0px;
+}
+
+ul, li {
+margin: 0px;
+list-style-type: none;
+}
+
+input {
+outline: none;
+border: none;
+}
+
+textarea {
+outline: none;
+border: none;
+}
+
+textarea:focus, input:focus {
+border-color: transparent;
+}
+
+button {
+outline: none;
+border: none;
+background: transparent;
+}
+
+button:hover {
+cursor: pointer;
+}
+
+iframe {
+border: none;
+}
+
+.main-container {
+  width: 100%;  
+  background-position: center center;
+  background-size: cover;
+}
+
+.background {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.main-container {
+    width: 100%;  
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: rgba(255,255,255,0.8);
     
-}
- input, select {
-	width: 400px;
-	height: 30px;
-	border-radius: 5px ;
-    padding: 0 0 0 10px;
-    margin: 0 auto 10px auto;
-    font-size: 20px;
-}
- #send-button {
-	background-color: #00BFFF;
-	font-size: 16px;
-	width: 200px;
-	height: 30px;
-	margin-left: 100px;
-}
+  }
+
+
+
+  .wrapper-signup {
+    width: 500px;
+    background: #2169bb;
+    background: -webkit-linear-gradient(45deg,  #2f6097, #dbebe381);
+    background: -o-linear-gradient(45deg,  #2169bb, #dbebe381);
+    background: -moz-linear-gradient(45deg,  #2169bb, #dbebe381);
+    background: linear-gradient(45deg,  #2169bb, #dbebe381);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 72px 55px 65px 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+    
+
+  .company-signup {
+    width: 100%;  
+    background-position: center center;
+    background-size: cover;
+  }
+  
+  
+
+  .company-signup-title {
+    position: relative;
+    top: 18px;
+    left: 10px;
+    display: block;
+    font-family: Poppins-Bold;
+    font-size: 39px;
+    color: #fff;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 70px;
+  }
+  
+
+
+  .wrapper {
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid rgba(255,255,255,0.24);
+    margin-bottom: 27px;
+  }
+  
+
+  input 				{
+    font-size:18px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:100%;
+    border:none;
+    border-bottom: 2px solid rgba(255,255,255,0.24);
+    background: transparent;
+  }
+  input:focus 		{ outline:none; }
+  
+
+  label 				 {
+    color: #fff;
+    font-size:18px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:5px;
+    top:10px;
+
+  }
+  
+  .bar 	{ position:relative;
+     display:block; width:300px;
+     }
+
+  .container-company-signup-btn {
+    margin: 0 auto;
+    padding-top: 23px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .company-signup-btn {
+    margin: 0 auto;
+    font-family: Poppins-Medium;
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.2;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    min-width: 120px;
+    height: 50px;
+    border-radius:10px;
+    position: relative;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+    background: #2169bb;
+    background: -webkit-linear-gradient(45deg,  #2f6097, #dbebe381);
+    background: -o-linear-gradient(45deg,  #2169bb, #dbebe381);
+    background: -moz-linear-gradient(45deg,  #2169bb, #dbebe381);
+    background: linear-gradient(45deg,  #2169bb, #dbebe381);
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  
+  .company-signup-btn::before {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 5px;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #fff;
+    opacity: 1;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  
+  .company-signup-btn:hover {
+    color: #fff;
+  }
+  
+  .company-signup-btn:hover:before {
+    opacity: 0;
+  }
+  
+  
+  /* .selection {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    height: 45px;
+    outline: none;
+    position: relative;
+  }
+  
+  .selection{
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    line-height: 1.2;
+    padding-left: 5px ;
+  }
+  
+  
+  input.input {
+    height: 45px;
+  }
+  
+  
+  textarea.input {
+    min-height: 115px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+  } */
+
+  
