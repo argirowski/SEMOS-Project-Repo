@@ -7,60 +7,55 @@
 </head>
 
 <body>
-
-    <nav class="app-nav">
-        <div class="app-nav-wrapper">
-            <div class="app-nav-left">
-                <div class="app-nav-menu-item">
-                    <a class="app-nav-link" href="">
-                        <div class="app-nav-block">
-                            <div class="app-nav-item-name">Job Seekers</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="app-nav-menu-item">
-                    <a class="app-nav-link" href="">
-                        <div class="app-nav-block">
-                            <div class="app-nav-item-name">Employers</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="app-nav-menu-item">
-                    <a class="app-nav-link" href="">
-                        <div class="app-nav-block">
-                            <div class="app-nav-item-name">About Us</div>
-                        </div>
-                    </a>
-                </div>
-
+  <nav class="app-nav">
+    <div class="app-nav-wrapper">
+      <div class="app-nav-left">
+        <div class="app-nav-menu-item">
+          <a class="app-nav-link" href="">
+            <div class="app-nav-block">
+              <div class="app-nav-item-name">Job Seekers</div>
             </div>
-
-            <div class="app-nav-right">
-
-
-                <div class="app-nav-menu-item">
-                    <a class="app-nav-link" href="">
-                        <div class="app-nav-block">
-                            <div class="app-nav-item-name">Log In</div>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="app-nav-menu-item">
-                    <a class="app-nav-link" href="">
-                        <div class="app-nav-block">
-                            <div class="app-nav-item-name">Get Started</div>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-
+          </a>
         </div>
-    </nav>
+        <div class="app-nav-menu-item">
+          <a class="app-nav-link" href="">
+            <div class="app-nav-block">
+              <div class="app-nav-item-name">Employers</div>
+            </div>
+          </a>
+        </div>
+        <div class="app-nav-menu-item">
+          <a class="app-nav-link" href="">
+            <div class="app-nav-block">
+              <div class="app-nav-item-name">About Us</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="app-nav-right">
 
-  <div class="background">
+
+        <div class="app-nav-menu-item">
+          <a class="app-nav-link" href="">
+            <div class="app-nav-block">
+              <div class="app-nav-item-name">Log In</div>
+            </div>
+          </a>
+        </div>
+
+
+        <div class="app-nav-menu-item">
+          <a class="app-nav-link" href="">
+            <div class="app-nav-block">
+              <div class="app-nav-item-name">Get Started</div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </nav>
 
 
     <div class="main-container">
@@ -83,23 +78,28 @@
 
           <br>
 
-          <input type="text" name="first_name" placeholder="First Name">
+          <label for="first_name">First Name: </label>
+          <input type="text" name="first_name">
           <span class="highlight"></span>
           <span class="bar"></span>
 
-          <input type="text" name="last_name" placeholder="Last Name">
+          <label for="last_name">Last Name: </label>
+          <input type="text" name="last_name">
           <span class="highlight"></span>
           <span class="bar"></span>
 
-          <input type="date" name="birth_date" placeholder="Date Of Birth">
+          <label for="date_of_birth">Date of birth: </label>
+          <input type="date" name="birth_date">
           <span class="highlight"></span>
           <span class="bar"></span>
 
-          <input type="text" name="email" placeholder="Email">
+          <label for="email">Email:</label>
+          <input type="text" name="email">
           <span class="highlight"></span>
           <span class="bar"></span>
 
-          <input type="tel" name="phone" placeholder="Phone Number">
+          <label for="phone_number">Phone number: </label>
+          <input type="tel" name="phone">
           <span class="highlight"></span>
           <span class="bar"></span>
 
@@ -109,7 +109,7 @@
 
           <br>
 
-          <select  name="country">
+          <select id ="country" name="country">
             <option value="">Country</option>
             <option value="AF">Afghanistan</option>
             <option value="AL">Albania</option>
@@ -126,11 +126,13 @@
             <span class="highlight"></span>
             <span class="bar"></span>
 
-            <input type="text" name="address" placeholder="Address">
+            
+            <input type="text" name="address" placeholder="address">
             <span class="highlight"></span>
             <span class="bar"></span>
 
-            <input type="text" placeholder="ZIP Code">
+            <label for="zip_code">ZIP code: </label>
+            <input type="text">
             <span class="highlight"></span>
             <span class="bar"></span>
 
@@ -140,29 +142,28 @@
 
             <br>
 
-            <input type="text" name="institution" placeholder="Institution">
+            <label for="institution">Institution: </label>
+            <input type="text" name="institution">
             <span class="highlight"></span>
             <span class="bar"></span>
 
-
-
-            <input type="text" name="level" placeholder="Level">
+            <label for="level">Level: </label>
+            <input type="text" name="level">
             <span class="highlight"></span>
             <span class="bar"></span>
 
-
-
-            <input type="text" name="degree" placeholder="Degree">
+            <label for="degree">Degree: </label>
+            <input type="text" name="degree">
             <span class="highlight"></span>
             <span class="bar"></span>
 
-
-            <input type="text" name="start_at" placeholder="Start at:">
+            <label for="start_at">Start at: </label>
+            <input type="text" name="start_at">
             <span class="highlight"></span>
             <span class="bar"></span>
 
-
-            <input type="text" name="finish_at" placeholder="Finish at:">
+            <label for="finish_at">Finish at: </label>
+            <input type="text" name="finish_at">
             <span class="highlight"></span>
             <span class="bar"></span>
 
@@ -172,37 +173,38 @@
 
             <br>
 
-            <input type="text" name="languages" placeholder="Languages">
+            <label for="languages">Languages: </label>
+            <input type="text" name="languages">
             <span class="highlight"></span>
             <span class="bar"></span>
 
-            <input type="text" name="communication_skills" placeholder="Communication skills">
+            <label for="communication_skills">Communication skills: </label>
+            <input type="text" name="communication_skills">
             <span class="highlight"></span>
             <span class="bar"></span>
 
-            <input type="text" name="organization_skills" placeholder="Organization skills">
+            <label for="organization_skills">Organization skills: </label>
+            <input type="text" name="organization_skills">
             <span class="highlight"></span>
             <span class="bar"></span>
 
-            <input type="text" name="digital_skills" placeholder="Digital skills">
+            <label for="digital_skills">Digital skills: </label>
+            <input type="text" name="digital_skills">
             <span class="highlight"></span>
             <span class="bar"></span>
 
             <br>
 
-            <div class="container-company-signup-btn">
-              <button class="company-signup-btn">
-                Press to Create CV
-              </button>
-            </div>
+            <button class="company-signup-btn">
+              Press to Create CV
+            </button>
+
         </form>
       </div>
     </div>
   </div>
-  </div>
   <div class="footer-container">
     <div class="footer">
-
       <div class="footer-content">
         <div class="footer-content-wrapper">
           <div class="footer-features">

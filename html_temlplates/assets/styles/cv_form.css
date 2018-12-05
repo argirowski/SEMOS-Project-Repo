@@ -32,9 +32,7 @@ body {
   background-size: cover;
 }
 
-.background {
-  background-image: url("'../images/Desktop.jpg'");
-}
+
 
 .container-nav {
     width: 80%;
@@ -223,6 +221,12 @@ iframe {
 border: none;
 }
 
+select {
+  font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    width: 100%;
+    border-radius: 4px;
+}
 
 
 .main-container {
@@ -313,10 +317,10 @@ border: none;
   
 
   label 				 {
+    display: inline;
     color: #fff;
     font-size:18px;
     font-weight:normal;
-    position:absolute;
     pointer-events:none;
     left:5px;
     top:10px;
@@ -327,12 +331,7 @@ border: none;
      display:block; width:300px;
      }
 
-  .container-company-signup-btn {
-    margin: 0 auto;
-    padding-top: 23px;
-    align-items: center;
-    justify-content: center;
-  }
+  
   
   .company-signup-btn {
     margin: 0 auto;
