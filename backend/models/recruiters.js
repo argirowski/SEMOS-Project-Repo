@@ -28,7 +28,7 @@ var Recruiters = mongoose.model(
             'programs_projects': String,
             'HR': String,
             'amenities': String,
-            'current_openings': [String]
+            'current_openings': String
         }
    })
 );
