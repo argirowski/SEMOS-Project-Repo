@@ -252,12 +252,15 @@ height: 70px;
       background-size: cover;
      
     }
-    .user-details h3 {
-      padding-top: 50px; 
+    .user-details h3, label {
+      padding-top: 10px; 
       font-family: Poppins-Bold;
       color: #fff;
     }
     
+    .user-details label {
+      color: #666666;
+    }
     
   
     .user-details-title {

@@ -2,194 +2,171 @@
 <html>
 
 <head>
-    <title>Company details</title>
+    <title>Company Details</title>
     <link rel="stylesheet" type="text/css" href="assets/styles/company_details.css">
+
 </head>
 
 <body>
-    <nav class="app-nav">
-        <div class="app-nav-wrapper">
-            <div class="app-nav-left">
 
-                <a class="app-nav-link" href="">
-                    <div class="app-nav-block">
-                        <div>Job Seekers</div>
+    <div class="app-nav-container">
+        <nav class="app-nav">
+            <div class="app-nav-wrapper">
+                <div class="app-nav-left">
+                    <div class="app-nav-menu-item">
+                        <a class="app-nav-link" href="">
+                            <div class="app-nav-block">
+                                <div class="app-nav-item-name">Job Seekers</div>
+                            </div>
+                        </a>
                     </div>
-                </a>
+                    <div class="app-nav-menu-item">
+                        <a class="app-nav-link" href="">
+                            <div class="app-nav-block">
+                                <div class="app-nav-item-name">Employers</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="app-nav-menu-item">
+                        <a class="app-nav-link" href="">
+                            <div class="app-nav-block">
+                                <div class="app-nav-item-name">About Us</div>
+                            </div>
+                        </a>
+                    </div>
 
-                <a class="app-nav-link" href="">
-                    <div class="app-nav-block">
-                        <div>Employers</div>
-                    </div>
-                </a>
+                </div>
 
-                <a class="app-nav-link" href="">
-                    <div class="app-nav-block">
-                        <div>About Us</div>
+                <div class="app-nav-right">
+
+
+                    <div class="app-nav-menu-item">
+                        <a class="app-nav-link" href="">
+                            <div class="app-nav-block">
+                                <div class="app-nav-item-name">Log In</div>
+                            </div>
+                        </a>
                     </div>
-                </a>
+
+
+                    <div class="app-nav-menu-item">
+                        <a class="app-nav-link" href="">
+                            <div class="app-nav-block">
+                                <div class="app-nav-item-name">Get Started</div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
             </div>
+        </nav>
 
-            <div class="app-nav-right">
 
-                <a class="app-nav-link" href="">
-                    <div class="app-nav-block">
-                        <div>Log In</div>
-                    </div>
-                </a>
 
-                <a class="app-nav-link" href="">
-                    <div class="app-nav-block">
-                        <div>Get Started</div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </nav>
+        <div class="company-details-container">
 
-    <div class="main-container">
 
-        <div class="wrapper-company-form">
+            <div class="wrapper-company-details">
 
-            <div class="container">
-                <form action="company-details-form">
+
+                <form class="company-details">
 
                     <div>
-                        <span class="company-signup-title">
+                        <span class="company-details-title">
                             Company Details
                         </span>
                     </div>
 
-                    <div class="row">
-                        <div>
-                            <label for="name">Company Name</label>
-                        </div>
-
-                        <div class="col">
-                            <input type="text" id="fname" name="companyname" placeholder="Your company name..">
-                        </div>
-                    </div>
+                    <label>Company Name:</label>
+                    <h3 class="highlight">Semos Education</h3>
+                    <span class="bar"></span>
 
 
-
-                    <div class="row">
-                        <div class="col">
-                            <label for="name">Last Name</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-                        </div>
-                    </div>
+                    <label>Email:</label>
+                    <h3 class="highlight">semos@yahoo.com</h3>
+                    <span class="bar"></span>
 
 
-                    <div class="row">
-                        <div class="col">
-                            <label for="country">Country</label>
-                        </div>
-                        <div class="col">
-                            <select id="country" name="country">
-                                <option value="">Country...</option>
-                               
-                                <option value="MK">Macedonia</option>
-                               
-                            </select>
-                        </div>
-                    </div>
+                    <label>Phone:</label>
+                    <h3 class="highlight">2567954</h3>
+                    <span class="bar"></span>
 
 
-                    <div class="row">
-                        <div class="col">
-                            <label for="name">City</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" id="city" name="city" placeholder="Your city..">
-                        </div>
-                    </div>
+                    <label>Website</label>
+                    <h3 class="highlight"> http://www.semosedu.com.mk</h3>
+                    <span class="bar"></span>
 
 
 
-                    <div class="row">
-                        <div class="col">
-                            <label for="postal-code">Postal Code</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" id="postal-code" name="postal-code" placeholder="Your last name..">
-                        </div>
-                    </div>
 
-                </form>
-            </div>
-
-
-            <div class="container2">
-                <form action="company-details-form">
-
-                    <div class="row">
-                        <div class="col">
-                            <label for="name">Phone Number</label>
-                        </div>
-
-                        <div class="col">
-                            <input type="text" id="number" name="phone-number" placeholder="Your phone number...">
-                        </div>
-                    </div>
+                    <label>Country:</label>
+                    <h3 class="highlight">N. Macedonia</h3>
+                    <span class="bar"></span>
 
 
 
-                    <div class="row">
-                        <div class="col">
-                            <label for="fax">Fax</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" id="fax" name="fax" placeholder="Your fax number">
-                        </div>
-                    </div>
+
+                    <label>City:</label>
+                    <h3 class="highlight">Lerin</h3>
+                    <span class="bar"></span>
+
+                    <label>Zip Code:</label>
+                    <h3 class="highlight">53100</h3>
+                    <span class="bar"></span>
 
 
-                    <div class="row">
-                        <div class="col">
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" id="email" name="email" placeholder="Your company email">
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col">
-                            <label for="website">Website</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" id="website" name="webiste" placeholder="Your website..">
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-                        <input type="submit" value="Submit">
                     </div>
                 </form>
             </div>
+        </div>
 
 
 
 
+        <div class="footer-container">
+            <div class="footer">
+
+                <div class="footer-content">
+                    <div class="footer-content-wrapper">
+                        <div class="footer-features">
+                            <h2>Companies</h2>
+                            <p>
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                unknown printer took a galley of type and scrambled it to make a type specimen book. It
+                                has survived not only five centuries,
+                            </p>
+                        </div>
+                        <div class="footer-features">
+                            <h2>Users</h2>
+                            <p>
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                unknown printer took a galley of type and scrambled it to make a type specimen book. It
+                                has survived not only five centuries,
+                            </p>
+                        </div>
+                        <div class="footer-features">
+                            <h2>About Us</h2>
+                            <p>
+                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                unknown printer took a galley of type and scrambled it to make a type specimen book. It
+                                has survived not only five centuries,
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
 
 
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
 
-
-
+                </div>
+            </div>
         </div>
 
     </div>
-
-    </div>
-
-
-
-
-
 </body>
 
 </html>
