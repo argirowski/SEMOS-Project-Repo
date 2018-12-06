@@ -1,24 +1,24 @@
 var jwt = require('jsonwebtoken');
-var recruits = require('../models/recruits');
+var users = require('../models/users');
 var bcrypt = require('bcryptjs');
 var validator = require('fastest-validator');
-var validatorSchema = require('../validators/recruits');
+var validatorSchema = require('../validators/users');
 var v = new validator();
 
 var login = (req, res) => {
-    var valid = v.validate(req.body, validatorSchema.recruitLogin);
+    var valid = v.validate(req.body, validatorSchema.userLogin);
     if (valid === true) {
-        recruits.getRecruitByEmail(req.body.email, (err, recruitData) => {
-            bcrypt.compare(req.body.password, recruitData.password)
+        users.getUserByEmail(req.body.email, (err, userData) => {
+            bcrypt.compare(req.body.password, userData.password)
             .then((valid) => {
                 if(valid) {
-                    var rd = {
-                        id: recruitData._id,
-                        email: recruitData.email,
-                        name: recruitData.firstname + ' ' + recruitData.lastname,
-                        role: recruitData.role
+                    var ud = {
+                        uid: userData._id,
+                        email: userData.email,
+                        name: userData.firstname + ' ' + userData.lastname,
+                        type: userData.type
                     };
-                    var token = jwt.sign(rd, 'semos_project');
+                    var token = jwt.sign(ud, 'semos_project');
                     return res.send(token);
                 } else {
                     return res.status(403).send("Unauthorized access.");
@@ -33,7 +33,7 @@ var login = (req, res) => {
 };
 
 var logout = (req, res) => {
-    res.send(req.recruit);
+    res.send(req.user);
 };
 
 module.exports = {

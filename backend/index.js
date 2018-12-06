@@ -9,8 +9,8 @@ var mongodb = require('./db/mongodb');
 
 var root = require('./handlers/root');
 var auth = require('./handlers/auth');
-var recruits = require('./handlers/recruits');
-var recruiters = require('./handlers/recruiters');
+var users = require('./handlers/users');
+var companies = require('./handlers/companies');
 var cvs = require('./handlers/cvs');
 var upload = require('./handlers/upload');
 
@@ -41,11 +41,11 @@ app.get('/', root);
 app.post('/auth/login', auth.login);
 app.get('/auth/logout', auth.logout);
 
-app.get('/recruits', recruits.getAllRecruits);
-app.get('/recruits/:id', recruits.getRecruitById);
-app.post('/recruits', recruits.createRecruit);
-app.delete('/recruits/:id', recruits.deleteRecruitById);
-app.put('/recruits/:id', recruits.updateRecruitById);
+app.get('/users', users.getAllUsers);
+app.get('/users/:id', users.getUserById);
+app.post('/users', users.createUser);
+app.delete('/users/:id', users.deleteUserById);
+app.put('/users/:id', users.updateUserById);
 
 app.get('/cvs', cvs.getAllCVs);
 app.get('/cvs/:id', cvs.getCVById);
@@ -54,7 +54,7 @@ app.delete('/cvs/:id', cvs.deleteCVById);
 app.put('/cvs/:id', cvs.updateCVById);
 app.get('/findcvsbytags', cvs.getCVByTag);
 
-// Route /cvs/findcvsbytags doesn't work.
+// Route /cvs/findcvsbytags doesn't work. It has to do with validation file.
 // {
 //     "message": "Cast to ObjectId failed for value \"findcvsbytags\" at path \"_id\" for model \"cvs\"",
 //     "name": "CastError",
@@ -64,11 +64,11 @@ app.get('/findcvsbytags', cvs.getCVByTag);
 //     "path": "_id"
 // }
 
-app.get('/recruiters', recruiters.getAllRecruiters);
-app.get('/recruiters/:id', recruiters.getRecruiterById);
-app.post('/recruiters', recruiters.createRecruiter);
-app.delete('/recruiters/:id', recruiters.deleteRecruiterById);
-app.put('/recruiters/:id', recruiters.updateRecruiterById);
+app.get('/companies', companies.getAllCompanies);
+app.get('/companies/:id', companiess.getCompanyById);
+// app.post('/companies', companies.createCompany);
+app.delete('/companies/:id', companies.deleteCompanyById);
+app.put('/companies/:id', companies.updateCompanyById);
 
 app.post('/upload/profileimage', upload.uploadProfileImage);
 app.post('/upload/document', upload.uploadDocument);

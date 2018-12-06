@@ -33,21 +33,20 @@ var getCVById = (req, res) => {
         } else {
             return res.send(data);
         }
-    })
+    });
 };
 
 
 var getCVByTag = (req, res) => {
     var tags = [];
     tags = req.query.tags.split(' ');
-    console.log(tags);
     cv.getCVByTag(tags, (err, data) => {
         if(err) {
             return res.status(500).send(err);
         } else {
             return res.send(data);
         }
-    })
+    });
 };
 
 var updateCVById = (req, res) => {
