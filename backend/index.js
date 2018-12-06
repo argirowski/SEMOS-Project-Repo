@@ -18,7 +18,6 @@ mongodb.init();
 
 var app = express();
 
-
 app.use(bodyParser.json());
 
 // app.use(jwt({
@@ -42,7 +41,6 @@ app.get('/', root);
 app.post('/auth/login', auth.login);
 app.get('/auth/logout', auth.logout);
 
-// Decide between recruits or applicants for job seekers; recruiters or companies for employers.
 app.get('/recruits', recruits.getAllRecruits);
 app.get('/recruits/:id', recruits.getRecruitById);
 app.post('/recruits', recruits.createRecruit);
@@ -54,7 +52,17 @@ app.get('/cvs/:id', cvs.getCVById);
 app.post('/cvs', cvs.createCV);
 app.delete('/cvs/:id', cvs.deleteCVById);
 app.put('/cvs/:id', cvs.updateCVById);
-app.get('/getcvbytag', cvs.getCVByTag); // Not working yet.
+app.get('/findcvsbytags', cvs.getCVByTag);
+
+// Route /cvs/findcvsbytags doesn't work.
+// {
+//     "message": "Cast to ObjectId failed for value \"findcvsbytags\" at path \"_id\" for model \"cvs\"",
+//     "name": "CastError",
+//     "stringValue": "\"findcvsbytags\"",
+//     "kind": "ObjectId",
+//     "value": "findcvsbytags",
+//     "path": "_id"
+// }
 
 app.get('/recruiters', recruiters.getAllRecruiters);
 app.get('/recruiters/:id', recruiters.getRecruiterById);

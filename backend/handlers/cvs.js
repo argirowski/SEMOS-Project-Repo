@@ -2,6 +2,10 @@ var cv = require('../models/cvs');
 
 var createCV = (req, res) => {
     var cvData = formatDates(req.body);
+    var splitTags = [];
+        splitTags = cvData.experience[0].tags.split(' ');
+        cvData.experience[0].tags = splitTags;
+        console.log(cvData);
     cv.addCV(cvData, (err) => {
         if(err){
             return res.status(500).send(err);
@@ -32,11 +36,11 @@ var getCVById = (req, res) => {
     })
 };
 
-// Not working yet. 
-//https://stackoverflow.com/questions/6912584/how-to-get-get-query-string-variables-in-express-js-on-node-js?fbclid=IwAR1eUAl38Yb5tT3zuBxUl9YwXR2zsGW9RGz4q-Jrk0BLvS6RE8Tx_lAwRC8
+
 var getCVByTag = (req, res) => {
-    // var tags = req.query.tags.split("+");
-    // console.log(tags);
+    var tags = [];
+    tags = req.query.tags.split(' ');
+    console.log(tags);
     cv.getCVByTag(tags, (err, data) => {
         if(err) {
             return res.status(500).send(err);

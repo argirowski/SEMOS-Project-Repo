@@ -27,7 +27,7 @@ var CVS = mongoose.model(
             {
                 'position': String,
                 'job_description': String,
-                'tags': String,
+                'tags': [String],
                 'employer': String,
                 'start_at': Date,
                 'finish_at': Date
@@ -77,9 +77,7 @@ var getCVById = (id, cb) => {
     });
 };
 
-// Not working yet.
 var getCVByTag = (tags, cb) => {
-    // var tags = req.query.tags.split(", ");
     CVS.find({"experience.tags": {$in: tags}}, (err, data) => {
         if(err) {
             return cb(err, null);

@@ -15,6 +15,7 @@
     "express-fileupload": "^1.0.0",
     "express-jwt": "^5.3.1",
     "fastest-validator": "^0.6.12",
+    "fs": "0.0.1-security",
     "mongoose": "^5.3.14"
   }
 }
