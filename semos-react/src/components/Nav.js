@@ -21,7 +21,7 @@ export class Nav extends React.Component{
                 </li>
 
                 <li>
-                <NavLink activeClassName="active" to="#">Find a job</NavLink>
+                <NavLink activeClassName="active" to="/singup_user">Sing Up User</NavLink>
                 </li>
 
                 <li>
