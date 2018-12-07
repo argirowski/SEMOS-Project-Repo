@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var jwt = require('express-jwt');
 var fileUpload = require('express-fileupload');
+var fs = require('fs');
 
 // var conf = require("./utils/config");
 
@@ -42,8 +43,11 @@ app.post('/auth/login', auth.login);
 app.get('/auth/logout', auth.logout);
 
 app.get('/users', users.getAllUsers);
+app.post('/users/createuserapplicant', users.createUserApplicant);
+app.post('/users/createusercompany', users.createUserCompany);
 app.get('/users/:id', users.getUserById);
-app.post('/users', users.createUser);
+// app.get('/users/:id/profile', users.getUserById); User profile....
+// app.get('/users/:id/dashboard', users.getUserById); User dashboard....
 app.delete('/users/:id', users.deleteUserById);
 app.put('/users/:id', users.updateUserById);
 
@@ -54,7 +58,7 @@ app.delete('/cvs/:id', cvs.deleteCVById);
 app.put('/cvs/:id', cvs.updateCVById);
 app.get('/findcvsbytags', cvs.getCVByTag);
 
-// Route /cvs/findcvsbytags doesn't work. It has to do with validation file.
+// Route /cvs/findcvsbytags doesn't work. It has to do with validation file. Fix it...
 // {
 //     "message": "Cast to ObjectId failed for value \"findcvsbytags\" at path \"_id\" for model \"cvs\"",
 //     "name": "CastError",
@@ -66,9 +70,12 @@ app.get('/findcvsbytags', cvs.getCVByTag);
 
 app.get('/companies', companies.getAllCompanies);
 app.get('/companies/:id', companiess.getCompanyById);
+// app.get('/companies/:id/dashboard', companiess.getCompanyById); Company dashboard...
+// app.get('/companies/:id/profile', companiess.getCompanyById); Company profile...
 // app.post('/companies', companies.createCompany);
 app.delete('/companies/:id', companies.deleteCompanyById);
 app.put('/companies/:id', companies.updateCompanyById);
+
 
 app.post('/upload/profileimage', upload.uploadProfileImage);
 app.post('/upload/document', upload.uploadDocument);
