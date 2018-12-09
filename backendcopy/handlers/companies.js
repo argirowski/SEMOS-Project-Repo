@@ -71,7 +71,7 @@ var deleteCompanyById = (req, res) => {
 };
 
 var updateCompanyById = (req, res) => {
-    var id = req.params.id;
+    var id = req.params.uid;
     var companyData = req.body;
     companies.updateCompanyById(id, companyData, (err) => {
         if(err){

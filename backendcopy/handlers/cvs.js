@@ -62,7 +62,7 @@ var getCVByTag = (req, res) => {
 
 var updateCVById = (req, res) => {
     var cvData = formatDates(req.body);
-    var id = req.params.id;
+    var id = req.params.uid;
     cv.updateCV(id, cvData, (err) => {
         if(err) {
             return res.status(500).send(err);

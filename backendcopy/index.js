@@ -56,7 +56,7 @@ app.get('/cvs', cvs.getAllCVs);
 app.get('/cvs/:id', cvs.getCVById);
 app.post('/cvs/:id', cvs.createCV);
 app.delete('/cvs/:id', cvs.deleteCVById);
-app.put('/cvs/:id', cvs.updateCVById);
+app.put('/cvs/edit', cvs.updateCVById);
 app.get('/findcvsbytags', cvs.getCVByTag);
 
 // Route /cvs/findcvsbytags doesn't work. It has to do with validation file. Fix it...
@@ -75,7 +75,7 @@ app.get('/companies/:id', companies.getCompanyById);
 // app.get('/companies/profile/:id', companiess.getCompanyById); Company profile...
 // app.post('/companies', companies.createCompany);
 app.delete('/companies/:id', companies.deleteCompanyById);
-app.put('/companies/:id', companies.updateCompanyById);
+app.put('/companies/edit', companies.updateCompanyById);
 
 app.post('/users/upload/profileimage/:id', upload.uploadProfileImage);
 app.post('/users/upload/document/:id', upload.uploadDocument);
