@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var jwt = require('express-jwt');
 var fileUpload = require('express-fileupload');
-var fs = require('fs');
+// var fs = require('fs');
 
 // var conf = require("./utils/config");
 
@@ -21,15 +21,17 @@ var app = express();
 
 app.use(bodyParser.json());
 
-// app.use(jwt({
-//         secret: 'semos_project'
-//     }).unless({
-//         path: [
-//             {url: '/', methods: ['GET']},
-//             {url: '/auth/login', methods: ['POST']}
-//         ]
-//     })
-// );
+app.use(jwt({
+        secret: 'semos_project'
+    }).unless({
+        path: [
+            {url: '/', methods: ['GET']},
+            {url: '/auth/login', methods: ['POST']},
+            {url: '/users/createuserapplicant', methods: ['POST']},
+            {url: '/users/createusercompany', methods: ['POST']}
+        ]
+    })
+);
 
 app.use(fileUpload({
     limits: {
@@ -43,11 +45,12 @@ app.post('/auth/login', auth.login);
 app.get('/auth/logout', auth.logout);
 
 app.get('/users', users.getAllUsers);
+app.get('/users/cvs/:id', cvs.getCVByUserId);
 app.post('/users/createuserapplicant', users.createUserApplicant);
 app.post('/users/createusercompany', users.createUserCompany);
 app.get('/users/:id', users.getUserById);
-// app.get('/users/:id/profile', users.getUserById); User profile....
-// app.get('/users/:id/dashboard', users.getUserById); User dashboard....
+// app.get('/users/profile/:id', users.getUserById); User profile, where CV is shown.
+// app.get('/users/dashboard/:id', users.getUserById); User dashboard, private for each user where details are shown and an edit button.
 app.delete('/users/:id', users.deleteUserById);
 app.put('/users/:id', users.updateUserById);
 
@@ -58,7 +61,7 @@ app.delete('/cvs/:id', cvs.deleteCVById);
 app.put('/cvs/:id', cvs.updateCVById);
 app.get('/findcvsbytags', cvs.getCVByTag);
 
-// Route /cvs/findcvsbytags doesn't work. It has to do with validation file. Fix it...
+// Route /cvs/findcvsbytags doesn't work. It has to do with validation file. Find solution. Error shown below:
 // {
 //     "message": "Cast to ObjectId failed for value \"findcvsbytags\" at path \"_id\" for model \"cvs\"",
 //     "name": "CastError",
@@ -69,16 +72,15 @@ app.get('/findcvsbytags', cvs.getCVByTag);
 // }
 
 app.get('/companies', companies.getAllCompanies);
-app.get('/companies/:id', companiess.getCompanyById);
-// app.get('/companies/:id/dashboard', companiess.getCompanyById); Company dashboard...
-// app.get('/companies/:id/profile', companiess.getCompanyById); Company profile...
-// app.post('/companies', companies.createCompany);
+app.get('/companies/:id', companies.getCompanyById);
+// app.get('/companies/profile/:id', companies.getCompanyById); Company profile, where the company info is shown.
+// app.get('/companies/dashboard/:id', companies.getCompanyById); Company dashboard, private for each user where details are shown and an edit button.
+// app.post('/companies', companies.createCompany); Work on this.
 app.delete('/companies/:id', companies.deleteCompanyById);
 app.put('/companies/:id', companies.updateCompanyById);
 
-
-app.post('/upload/profileimage', upload.uploadProfileImage);
-app.post('/upload/document', upload.uploadDocument);
+app.post('/users/upload/profileimage/:id', upload.uploadProfileImage);
+app.post('/users/upload/document/:id', upload.uploadDocument);
 
 app.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
@@ -93,5 +95,7 @@ app.use((err, req, res, next) => {
 //     console.log(conf.getConfig().db.username);
 //     console.log(conf.getConfig().db.password);
 // }, 1000);
+
+
 
 app.listen(80);

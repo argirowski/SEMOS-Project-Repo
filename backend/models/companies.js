@@ -8,6 +8,7 @@ var Companies = mongoose.model(
         'email': String,
         'website': String,
         'phone': String,
+        'userId': String,
         'location': {
             'country': String,
             'city': String,

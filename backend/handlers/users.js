@@ -112,7 +112,8 @@ var deleteUserById = (req, res) => {
 };
 
 var updateUserById = (req, res) => {
-    var id = req.params.id;
+    // var id = req.params.id; //used when testing without token
+    var id = req.user.uid; //id that is within the token at login.
     var userData = req.body;
     users.updateRecruitById(id, userData, (err) => {
         if(err){
@@ -126,8 +127,8 @@ var updateUserById = (req, res) => {
 module.exports = {
     getAllUsers,
     getUserById,
-    createUserRecruit,
-    createUserRecruiter,
+    createUserApplicant,
+    createUserCompany,
     deleteUserById,
     updateUserById,
     getUserByType

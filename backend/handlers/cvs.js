@@ -36,6 +36,17 @@ var getCVById = (req, res) => {
     });
 };
 
+var getCVByUserId = (req, res) => {
+    var id = req.params.id;
+    cv.getCVByUserId(id, (err, data) => {
+        if(err) {
+            return res.status(500).send(err);
+        } else {
+            return res.send(data);
+        }
+    });
+};
+
 
 var getCVByTag = (req, res) => {
     var tags = [];
@@ -105,5 +116,6 @@ module.exports = {
     getCVById,
     updateCVById,
     deleteCVById,
-    getCVByTag
+    getCVByTag,
+    getCVByUserId
 }

@@ -4,6 +4,7 @@ var companyCreate = {
     email: {type: "email", empty: false},
     website: {type: "string", empty: false},
     phone: {type:"string", optional: true},
+    userId: {type: "string", empty: false},
     location: {type: "object", props: {
                     country: {type: "string", empty: false},
                     city: {type: "string", empty: false},

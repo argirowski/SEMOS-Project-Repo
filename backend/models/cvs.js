@@ -8,6 +8,7 @@ var CVS = mongoose.model(
         'birth_date': Date,
         'email': String,
         'phone': String,
+        'userId': String,
         'residence': {
             'country': String,
             'city': String,
@@ -87,6 +88,16 @@ var getCVByTag = (tags, cb) => {
     });
 };
 
+var getCVByUserId = (id, cb) => {
+    CVS.findOne({userId: id}, (err, data) => {
+        if(err) {
+            return cb(err, null);
+        } else {
+            return cb(null, data);
+        }
+    });
+}
+
 var updateCVById = (id, data, cb) => {
     CVS.updateOne({_id: id}, data, (err) => {
         if(err){
@@ -113,5 +124,6 @@ module.exports = {
     getCVById,
     updateCVById,
     deleteCVById,
-    getCVByTag
+    getCVByTag,
+    getCVByUserId
 }

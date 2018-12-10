@@ -18,7 +18,7 @@ var Users = mongoose.model(
 );
 
 var getAllUsers = (cb) => {
-    Users.find({}, {password: -1}, (err, data) => {
+    Users.find({}, {password: 0}, (err, data) => {
         if(err){
             return cb(err, null);
         } else {

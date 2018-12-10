@@ -4,6 +4,7 @@ var cvCreate = {
     birth_date: {type: "date", empty: false},
     email: {type: "email", empty: false},
     phone: {type: "string", empty: false},
+    userId: {type: "string", empty: false},
     residence: {type: "object", props: {
         country: {type: "string", empty: false},
         city: {type: "string", empty: false},
