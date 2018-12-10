@@ -6,8 +6,6 @@ import {App} from './components/App';
 
 import "./assets/styles/global.css";
 
-
-
 ReactDOM.render(
     <BrowserRouter>
         <Route path="/" component={App} />
