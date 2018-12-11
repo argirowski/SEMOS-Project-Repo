@@ -1,6 +1,6 @@
 var userCreate = {
-    firstname: {type: 'string', empty: false},
-    lastname: {type: 'string', empty: false},
+    first_name: {type: 'string', empty: false},
+    last_name: {type: 'string', empty: false},
     email: {type: 'email', empty: false},
     password: {type: 'string', min: 8, max: 16, empty: false},
     type: {type: 'string', empty: false},
@@ -15,7 +15,7 @@ var userCreate = {
 
 var userLogin = {
     email: {type: 'email', empty: false},
-    password: {type: 'string', min: 8, max: 16, empty: false}
+    password: {type: 'string', min: 8, max: 32, empty: false}
 };
 
 module.exports = {

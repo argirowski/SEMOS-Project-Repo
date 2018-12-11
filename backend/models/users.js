@@ -3,8 +3,8 @@ var mongoose = require('mongoose');
 var Users = mongoose.model(
     'users',
     new mongoose.Schema({
-        'firstname': String,
-        'lastname': String,
+        'first_name': String,
+        'last_name': String,
         'email': String,
         'password': String,
         'type': String,

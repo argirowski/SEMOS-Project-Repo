@@ -36,7 +36,7 @@ var getUserByType = (req, res) => {
     });
 };
 
-var createUserApplicant = (req, res) => {
+var createUser = (req, res) => {
     let v = new validator();
     var valid = v.validate(req.body, validatorSchema.userCreate);
 
@@ -49,7 +49,6 @@ var createUserApplicant = (req, res) => {
                     bcrypt.hash(req.body.password, 10, (err, hash) => {
                         var userData = req.body;
                         userData.password = hash;
-                        userData.type = 'applicant';
                         users.createUser(userData, (err) => {
                             if(err) {
                                 res.send(err);
@@ -59,39 +58,7 @@ var createUserApplicant = (req, res) => {
                         });
                     });
                 } else {
-                    res.status(400).send("User already exists.");
-                }
-            }
-        });
-    } else {
-        res.status(400).send(valid);
-    }
-};
-
-var createUserCompany = (req, res) => {
-    let v = new validator();
-    var valid = v.validate(req.body, validatorSchema.userCreate);
-
-    if(valid === true) {
-        users.getUserByEmail(req.body.email, (err, data) => {
-            if (err) {
-                return res.send(err);
-            } else {
-                if (data == null) {
-                    bcrypt.hash(req.body.password, 10, (err, hash) => {
-                        var userData = req.body;
-                        userData.password = hash;
-                        userData.type = 'company';
-                        users.createUser(userData, (err) => {
-                            if(err) {
-                                res.send(err);
-                            } else {
-                                res.status(201).send("User created.");
-                            }
-                        });
-                    });
-                } else {
-                    res.status(400).send("User already exists.");
+                    res.status(400).send("User with that email already exists.");
                 }
             }
         });
@@ -112,10 +79,9 @@ var deleteUserById = (req, res) => {
 };
 
 var updateUserById = (req, res) => {
-    // var id = req.params.id; //used when testing without token
-    var id = req.user.uid; //id that is within the token at login.
+    var id = req.user.id;
     var userData = req.body;
-    users.updateRecruitById(id, userData, (err) => {
+    users.updateUserById(id, userData, (err) => {
         if(err){
             res.status(500).send(err)
         } else {
@@ -124,12 +90,23 @@ var updateUserById = (req, res) => {
     });
 };
 
+var getCurrentUserById = (req, res) => {
+    var id = req.user.id; 
+    users.getUserById(id, (err, data) => {
+        if(err){
+            res.status(500).send(err)
+        } else {
+            res.status(200).send(data);
+        }
+    });
+};
+
 module.exports = {
     getAllUsers,
     getUserById,
-    createUserApplicant,
-    createUserCompany,
+    createUser,
     deleteUserById,
     updateUserById,
-    getUserByType
+    getUserByType,
+    getCurrentUserById
 }

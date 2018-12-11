@@ -9,16 +9,19 @@ var login = (req, res) => {
     var valid = v.validate(req.body, validatorSchema.userLogin);
     if (valid === true) {
         users.getUserByEmail(req.body.email, (err, userData) => {
+            if (!userData) {
+                return res.status(404).send("No such user.")
+            }
             bcrypt.compare(req.body.password, userData.password)
             .then((valid) => {
                 if(valid) {
                     var ud = {
-                        uid: userData._id,
+                        id: userData._id,
                         email: userData.email,
                         name: userData.firstname + ' ' + userData.lastname,
                         type: userData.type
                     };
-                    var token = jwt.sign(ud, 'semos_project');
+                    var token = jwt.sign(ud, 'semos_project', { expiresIn: "24h"});
                     return res.send(token);
                 } else {
                     return res.status(403).send("Unauthorized access.");

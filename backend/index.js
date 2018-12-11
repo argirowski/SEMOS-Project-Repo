@@ -27,8 +27,7 @@ app.use(jwt({
         path: [
             {url: '/', methods: ['GET']},
             {url: '/auth/login', methods: ['POST']},
-            {url: '/users/createuserapplicant', methods: ['POST']},
-            {url: '/users/createusercompany', methods: ['POST']}
+            {url: '/users', methods: ['POST']}
         ]
     })
 );
@@ -40,28 +39,27 @@ app.use(fileUpload({
 }));
 
 app.get('/', root);
+app.get('/current', users.getCurrentUserById);
 
 app.post('/auth/login', auth.login);
 app.get('/auth/logout', auth.logout);
 
+app.get('/users/dashboard', users.getCurrentUserById); //User dashboard, where a search form and results are shown, and edit/delete buttons etc.
+
 app.get('/users', users.getAllUsers);
-app.get('/users/cvs/:id', cvs.getCVByUserId);
-app.post('/users/createuserapplicant', users.createUserApplicant);
-app.post('/users/createusercompany', users.createUserCompany);
+app.post('/users', users.createUser);
 app.get('/users/:id', users.getUserById);
-// app.get('/users/profile/:id', users.getUserById); User profile, where CV is shown.
-// app.get('/users/dashboard/:id', users.getUserById); User dashboard, private for each user where details are shown and an edit button.
 app.delete('/users/:id', users.deleteUserById);
 app.put('/users/:id', users.updateUserById);
 
 app.get('/cvs', cvs.getAllCVs);
-app.get('/cvs/:id', cvs.getCVById);
 app.post('/cvs', cvs.createCV);
+app.get('/cvs/:id', cvs.getCVById);
 app.delete('/cvs/:id', cvs.deleteCVById);
 app.put('/cvs/:id', cvs.updateCVById);
-app.get('/findcvsbytags', cvs.getCVByTag);
+app.get('/getcvsbytags', cvs.getCVByTag);
 
-// Route /cvs/findcvsbytags doesn't work. It has to do with validation file. Find solution. Error shown below:
+// Route /cvs/findbytags doesn't work. It has to do with validation. Error shown below:
 // {
 //     "message": "Cast to ObjectId failed for value \"findcvsbytags\" at path \"_id\" for model \"cvs\"",
 //     "name": "CastError",
@@ -72,15 +70,13 @@ app.get('/findcvsbytags', cvs.getCVByTag);
 // }
 
 app.get('/companies', companies.getAllCompanies);
+app.post('/companies', companies.createCompany); 
 app.get('/companies/:id', companies.getCompanyById);
-// app.get('/companies/profile/:id', companies.getCompanyById); Company profile, where the company info is shown.
-// app.get('/companies/dashboard/:id', companies.getCompanyById); Company dashboard, private for each user where details are shown and an edit button.
-// app.post('/companies', companies.createCompany); Work on this.
 app.delete('/companies/:id', companies.deleteCompanyById);
 app.put('/companies/:id', companies.updateCompanyById);
 
-app.post('/users/upload/profileimage/:id', upload.uploadProfileImage);
-app.post('/users/upload/document/:id', upload.uploadDocument);
+app.post('/upload/profileimage/:id', upload.uploadProfileImage);
+app.post('/upload/document/:id', upload.uploadDocument);
 
 app.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
@@ -95,7 +91,5 @@ app.use((err, req, res, next) => {
 //     console.log(conf.getConfig().db.username);
 //     console.log(conf.getConfig().db.password);
 // }, 1000);
-
-
 
 app.listen(80);

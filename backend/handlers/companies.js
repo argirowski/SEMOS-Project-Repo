@@ -25,39 +25,19 @@ var getCompanyById = (req, res) => {
     });
 };
 
-// How to associate company with user with type company/recruiter?
-
-// var createCompany = (req, res) => {
-//     let v = new validator();
-//     var valid = v.validate(req.body, validatorSchema.companyCreate);
-
-//     if(valid === true) {
-//         companies.getCompanyByEmail(req.body.email, (err, data) => {
-//             if (err) {
-//                 return res.send(err);
-//             } else {
-//                 if (data == null) {
-//                     bcrypt.hash(req.body.password, 10, (err, hash) => {
-//                         var recruiterData = req.body;
-//                         recruiterData.password = hash;
-//                         recruiterData.role = 'user';
-//                         recruiters.createRecruiter(recruiterData, (err) => {
-//                             if(err) {
-//                                 res.send(err);
-//                             } else {
-//                                 res.status(201).send("Recruiter created.");
-//                             }
-//                         });
-//                     });
-//                 } else {
-//                     res.status(400).send("Recruiter already exists.");
-//                 }
-//             }
-//         })
-//     } else {
-//         res.status(400).send(valid);
-//     }
-// };
+var createCompany = (req, res) => {
+    var userId = req.user.id;
+    var companyData = formatDates(req.body);
+        companyData.userId = userId;
+        console.log(companyData);
+    companies.addCompany(companyData, (err) => {
+        if(err){
+            return res.status(500).send(err);
+        } else {
+            return res.send("Company added.");
+        }
+    });
+};
 
 var deleteCompanyById = (req, res) => {
     var id = req.params.id;
@@ -82,9 +62,16 @@ var updateCompanyById = (req, res) => {
     });
 };
 
+var formatDates = (companyData) => {
+    if(companyData.established != undefined && companyData.established != null){
+        companyData.established = new Date(companyData.established);
+    } return companyData;
+}
+
 module.exports = {
     getAllCompanies,
     getCompanyById,
+    createCompany,
     deleteCompanyById,
     updateCompanyById
 }

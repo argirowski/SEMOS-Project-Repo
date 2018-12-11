@@ -1,11 +1,12 @@
 var cv = require('../models/cvs');
 
 var createCV = (req, res) => {
+    var userId = req.user.id;
     var cvData = formatDates(req.body);
+        cvData.userId = userId;
     var splitTags = [];
         splitTags = cvData.experience[0].tags.split(' ');
         cvData.experience[0].tags = splitTags;
-        console.log(cvData);
     cv.addCV(cvData, (err) => {
         if(err){
             return res.status(500).send(err);
