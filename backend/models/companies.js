@@ -3,33 +3,34 @@ var mongoose = require('mongoose');
 var Companies = mongoose.model(
     'companies', 
     new mongoose.Schema({
-        'company_name': String,
-        'established': Date,
-        'email': String,
-        'website': String,
-        'phone': String,
-        'userId': String,
-        'location': {
-            'country': String,
-            'city': String,
-            'zip_code': Number,
-            'address': String
+        "company_name": String,
+        "established": Date,
+        "email": String,
+        "website": String,
+        "phone": String,
+        "userId": String,
+        "location": {
+            "country": String,
+            "city": String,
+            "zip_code": Number,
+            "address": String
         },
-        'company_information': [
+        "company_information": [
             {
-                'industry': String,
-                'scope_of_work': String,
-                'no_of_employees': Number,
-                'expected_hires_per_year': Number,
-                'vision': String,
-                'portfolio': String
+                "industry": String,
+                "scope_of_work": String,
+                "no_of_employees": Number,
+                "tags": [String],
+                "expected_hires_per_year": Number,
+                "vision": String,
+                "portfolio": String
             }
         ],
-        'opportunities': {
-            'programs_projects': String,
-            'HR': String,
-            'amenities': String,
-            'current_openings': String
+        "opportunities": {
+            "programs_projects": String,
+            "HR": String,
+            "amenities": String,
+            "current_openings": String
         }
    })
 );
@@ -85,10 +86,32 @@ var deleteCompanyById = (id, cb) => {
     });
 };
 
+var getCompanyByTag = (tags, cb) => {
+    Companies.find({"company_information": {$in: tags}}, (err, data) => {
+        if(err) {
+            return cb(err, null);
+        } else {
+            return cb(null, data);
+        }
+    });
+};
+
+var getCompanyByUserId = (id, cb) => {
+    Companies.findOne({userId: id}, (err, data) => {
+        if(err) {
+            return cb(err, null);
+        } else {
+            return cb(null, data);
+        }
+    });
+};
+
 module.exports = {
     addCompany,
     getAllCompanies,
     getCompanyById,
     updateCompanyById,
-    deleteCompanyById 
+    deleteCompanyById,
+    getCompanyByTag,
+    getCompanyByUserId
 }

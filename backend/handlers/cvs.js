@@ -1,23 +1,32 @@
-var cv = require('../models/cvs');
+var validator = require('fastest-validator');
+
+var cvs = require('../models/cvs');
+var validatorSchema = require('../validators/cvs');
+var v = new validator();
 
 var createCV = (req, res) => {
-    var userId = req.user.id;
-    var cvData = formatDates(req.body);
-        cvData.userId = userId;
-    var splitTags = [];
-        splitTags = cvData.experience[0].tags.split(' ');
-        cvData.experience[0].tags = splitTags;
-    cv.addCV(cvData, (err) => {
-        if(err){
-            return res.status(500).send(err);
-        } else {
-            return res.send("CV added.");
-        }
-    });
+    var valid = v.validate(req.body, validatorSchema.cvCreate);
+    if(valid === true) {
+        var userId = req.user.id;
+        var cvData = formatDates(req.body);
+            cvData.userId = userId;
+        var splitTags = [];
+            splitTags = cvData.experience[0].tags.split(' ');
+            cvData.experience[0].tags = splitTags;
+        cvs.addCV(cvData, (err) => {
+            if(err){
+                return res.status(500).send(err);
+            } else {
+                return res.send("CV added.");
+            }
+        });
+    } else {
+        res.status(400).send(valid);
+    }
 };
 
 var getAllCVs = (req, res) => {
-    cv.getAllCVs((err, data) => {
+    cvs.getAllCVs((err, data) => {
         if(err) {
             return res.status(500).send(err);
         } else {
@@ -28,7 +37,7 @@ var getAllCVs = (req, res) => {
 
 var getCVById = (req, res) => {
     var id = req.params.id;
-    cv.getCVById(id, (err, data) => {
+    cvs.getCVById(id, (err, data) => {
         if(err) {
             return res.status(500).send(err);
         } else {
@@ -39,7 +48,7 @@ var getCVById = (req, res) => {
 
 var getCVByUserId = (req, res) => {
     var id = req.params.id;
-    cv.getCVByUserId(id, (err, data) => {
+    cvs.getCVByUserId(id, (err, data) => {
         if(err) {
             return res.status(500).send(err);
         } else {
@@ -48,11 +57,10 @@ var getCVByUserId = (req, res) => {
     });
 };
 
-
 var getCVByTag = (req, res) => {
     var tags = [];
     tags = req.query.tags.split(' ');
-    cv.getCVByTag(tags, (err, data) => {
+    cvs.getCVByTag(tags, (err, data) => {
         if(err) {
             return res.status(500).send(err);
         } else {
@@ -62,24 +70,44 @@ var getCVByTag = (req, res) => {
 };
 
 var updateCVById = (req, res) => {
-    var cvData = formatDates(req.body);
-    var id = req.params.id;
-    cv.updateCV(id, cvData, (err) => {
-        if(err) {
-            return res.status(500).send(err);
+    cvs.getCVByUserId(req.user.id, (err, cv) => {
+        if (err) {
+            return res.send(err);
         } else {
-            return res.send("CV updated.");
+            if (cv.userId == req.user.id) {
+                var id = req.params.id;
+                var cvData = formatDates(req.body);
+                cvs.updateCVById(id, cvData, (err) => {
+                    if(err) {
+                        return res.status(500).send(err);
+                    } else {
+                        return res.send("CV updated.");
+                    }
+                });
+            } else {
+                res.status(400).send("Not authorized.");
+            }
         }
     });
 };
 
 var deleteCVById = (req, res) => {
-    var id = req.params.id;
-    cv.deleteCVById(id, (err) => {
-        if(err) {
-            return res.status(500).send(err);
+    cvs.getCVByUserId(req.user.id, (err, cv) => {
+        if (err) {
+            return res.send(err);
         } else {
-            return res.send("CV deleted.");
+            if (cv.userId == req.user.id) {
+                var id = req.params.id;
+                cvs.deleteCVById(id, (err) => {
+                    if(err) {
+                        return res.status(500).send(err);
+                    } else {
+                        return res.send("CV deleted.");
+                    }
+                });
+            } else {
+                res.status(400).send("Not authorized.");
+            }
         }
     });
 };
@@ -109,7 +137,7 @@ var formatDates = (cvData) => {
         }
     }
     return cvData;
-}
+};
 
 module.exports = {
     createCV,

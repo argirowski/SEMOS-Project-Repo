@@ -3,16 +3,17 @@ var mongoose = require('mongoose');
 var Users = mongoose.model(
     'users',
     new mongoose.Schema({
-        'first_name': String,
-        'last_name': String,
-        'email': String,
-        'password': String,
-        'type': String,
-        'location': {
-            'country': String,
-            'city': String,
-            'region': String,
-            'address': String
+        "first_name": String,
+        "last_name": String,
+        "email": String,
+        "password": String,
+        "type": String,
+        "registration_date": {type: Date, default: Date.now},
+        "location": {
+            "country": String,
+            "city": String,
+            "region": String,
+            "address": String
         }
     })
 );
@@ -28,7 +29,7 @@ var getAllUsers = (cb) => {
 };
 
 var getUserByEmail = (email, cb) => {
-    Users.findOne({email: email}, {password: 1, type: 1, firstname: 1, lastname: 1, email: 1, location: 1}, (err, data) => {
+    Users.findOne({email: email}, (err, data) => {
         if(err){
             return cb(err, null);
         } else {
@@ -38,7 +39,7 @@ var getUserByEmail = (email, cb) => {
 };
 
 var getUserByType = (type, cb) => {
-    Users.find({type: type}, {password: 1, type: 1, firstname: 1, lastname: 1, email: 1, location: 1}, (err, data) => {
+    Users.find({type: type}, {password: 0}, (err, data) => {
         if(err){
             return cb(err, null);
         } else {
@@ -48,7 +49,7 @@ var getUserByType = (type, cb) => {
 };
 
 var getUserById = (id, cb) => {
-    Users.findById(id, (err, data) => {
+    Users.findById(id, {password: 0}, (err, data) => {
         if(err){
             return cb(err, null);
         } else {

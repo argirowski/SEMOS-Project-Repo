@@ -1,8 +1,9 @@
-var utils = require('../utils');
-var users = require('../models/users');
 var bcrypt = require('bcryptjs');
 var validator = require('fastest-validator');
+
+var users = require('../models/users');
 var validatorSchema = require('../validators/users');
+let v = new validator();
 
 var getAllUsers = (req, res) => {
     users.getAllUsers((err, data) => {
@@ -37,9 +38,7 @@ var getUserByType = (req, res) => {
 };
 
 var createUser = (req, res) => {
-    let v = new validator();
     var valid = v.validate(req.body, validatorSchema.userCreate);
-
     if(valid === true) {
         users.getUserByEmail(req.body.email, (err, data) => {
             if (err) {
@@ -58,24 +57,13 @@ var createUser = (req, res) => {
                         });
                     });
                 } else {
-                    res.status(400).send("User with that email already exists.");
+                    res.status(400).send("User registered with that email already exists.");
                 }
             }
         });
     } else {
         res.status(400).send(valid);
     }
-};
-
-var deleteUserById = (req, res) => {
-    var id = req.params.id;
-    users.deleteUserById(id, (err) => {
-        if(err){
-            res.status(500).send(err)
-        } else {
-            res.status(204).send("User deleted.");
-        }
-    });
 };
 
 var updateUserById = (req, res) => {
@@ -86,6 +74,39 @@ var updateUserById = (req, res) => {
             res.status(500).send(err)
         } else {
             res.status(200).send("User info updated.");
+        }
+    });
+};
+
+var updateUserById = (req, res) => {
+    var id = req.user.id;
+    var userData = req.body;
+    users.getUserById(id, (err, user) => {
+        if (err) {
+            return res.send(err);
+        } else {
+            if (user._id == id) {
+                users.updateUserById(id, userData, (err) => {
+                    if(err) {
+                        return res.status(500).send(err);
+                    } else {
+                        return res.send("User info updated.");
+                    }
+                });
+            } else {
+                res.status(400).send("Not authorized.");
+            }
+        }
+    });
+};
+
+var deleteUserById = (req, res) => {
+    var id = req.user.id;
+    users.deleteUserById(id, (err) => {
+        if(err){
+            res.status(500).send(err)
+        } else {
+            res.status(204).send("User deleted.");
         }
     });
 };

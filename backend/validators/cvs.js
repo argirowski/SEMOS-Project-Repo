@@ -1,10 +1,10 @@
 var cvCreate = {
     first_name: {type: "string", empty: false},
     last_name: {type: "string", empty: false},
-    birth_date: {type: "date", empty: false},
+    // birth_date: {type: "date", empty: false},
     email: {type: "email", empty: false},
     phone: {type: "string", empty: false},
-    userId: {type: "string", empty: false},
+    // userId: {type: "string"},
     residence: {type: "object", props: {
         country: {type: "string", empty: false},
         city: {type: "string", empty: false},
@@ -17,8 +17,8 @@ var cvCreate = {
             institution: {type: "string", empty: false},
             level: {type: "string", empty: false},
             degree: {type: "string", empty: false},
-            start_at: {type: "date", empty: false},
-            finish_at: {type: "date", empty: false}
+            // start_at: {type: "date", empty: false},
+            // finish_at: {type: "date", empty: false}
             }
         }
     },
@@ -26,13 +26,13 @@ var cvCreate = {
         type: "object", props: {
             position: {type: "string", empty: false},
             job_description: {type: "string", empty: false},
-            tags: {
-                type: "array",
-                items: {type: "string", empty: false}
-                },
+            // tags: {
+            //     type: "array",
+            //     items: {type: "string", empty: false}
+            //     },
             employer: {type: "string", empty: false},
-            start_at: {type: "date", empty: false},
-            finish_at: {type: "date", empty: false}
+            // start_at: {type: "date", empty: false},
+            // finish_at: {type: "date", empty: false}
             }
         }
     },
@@ -44,7 +44,7 @@ var cvCreate = {
             }
     },
     other: {type: "object", props: {
-            profile_photo: {type: "string", empty: false},
+            profile_photo: {type: "string", empty: true},
             attachment: {type: "string", empty: true}
             }
         }

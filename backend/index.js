@@ -5,14 +5,13 @@ var fileUpload = require('express-fileupload');
 // var fs = require('fs');
 
 // var conf = require("./utils/config");
-
 var mongodb = require('./db/mongodb');
 
 var root = require('./handlers/root');
 var auth = require('./handlers/auth');
 var users = require('./handlers/users');
-var companies = require('./handlers/companies');
 var cvs = require('./handlers/cvs');
+var companies = require('./handlers/companies');
 var upload = require('./handlers/upload');
 
 mongodb.init();
@@ -34,12 +33,12 @@ app.use(jwt({
 
 app.use(fileUpload({
     limits: {
-        fileSize: 50 * 1024 * 1024
+        fileSize: 3000000 //Bytes = 3MB
     }
 }));
 
 app.get('/', root);
-app.get('/current', users.getCurrentUserById);
+app.get('/current', users.getCurrentUserById); //For testing purposes.
 
 app.post('/auth/login', auth.login);
 app.get('/auth/logout', auth.logout);
@@ -57,7 +56,7 @@ app.post('/cvs', cvs.createCV);
 app.get('/cvs/:id', cvs.getCVById);
 app.delete('/cvs/:id', cvs.deleteCVById);
 app.put('/cvs/:id', cvs.updateCVById);
-app.get('/getcvsbytags', cvs.getCVByTag);
+app.get('/search/cvs', cvs.getCVByTag);
 
 // Route /cvs/findbytags doesn't work. It has to do with validation. Error shown below:
 // {
@@ -74,6 +73,7 @@ app.post('/companies', companies.createCompany);
 app.get('/companies/:id', companies.getCompanyById);
 app.delete('/companies/:id', companies.deleteCompanyById);
 app.put('/companies/:id', companies.updateCompanyById);
+app.put('/search/companies', companies.getCompanyByTag);
 
 app.post('/upload/profileimage/:id', upload.uploadProfileImage);
 app.post('/upload/document/:id', upload.uploadDocument);

@@ -3,46 +3,46 @@ var mongoose = require('mongoose');
 var CVS = mongoose.model(
     'cvs', 
     new mongoose.Schema({
-        'first_name': String,
-        'last_name': String,
-        'birth_date': Date,
-        'email': String,
-        'phone': String,
-        'userId': String,
-        'residence': {
-            'country': String,
-            'city': String,
-            'zip_code': Number,
-            'address': String
+        "first_name": String,
+        "last_name": String,
+        "birth_date": {type: Date, default: Date},
+        "email": String,
+        "phone": String,
+        "userId": String,
+        "residence": {
+            "country": String,
+            "city": String,
+            "zip_code": Number,
+            "address": String
         },
-        'education': [
+        "education": [
             {
-                'institution': String,
-                'level': String,
-                'degree': String,
-                'start_at': Date,
-                'finish_at': Date
+                "institution": String,
+                "level": String,
+                "degree": String,
+                "start_at": Date,
+                "finish_at": Date
             }
         ],
-        'experience': [
+        "experience": [
             {
-                'position': String,
-                'job_description': String,
-                'tags': [String],
-                'employer': String,
-                'start_at': Date,
-                'finish_at': Date
+                "position": String,
+                "job_description": String,
+                "tags": [String],
+                "employer": String,
+                "start_at": Date,
+                "finish_at": Date
             }
         ],
-        'skills': {
-            'languages': String,
-            'communication_skills': String,
-            'organisational_skills': String,
-            'digital_skills': String
+        "skills": {
+            "languages": String,
+            "communication_skills": String,
+            "organisational_skills": String,
+            "digital_skills": String
         },
-        'other': {
-            'profile_photo': String,
-            'attachment': String
+        "other": {
+            "profile_photo": String,
+            "attachment": String
         }
    })
 );
@@ -96,7 +96,7 @@ var getCVByUserId = (id, cb) => {
             return cb(null, data);
         }
     });
-}
+};
 
 var updateCVById = (id, data, cb) => {
     CVS.updateOne({_id: id}, data, (err) => {
