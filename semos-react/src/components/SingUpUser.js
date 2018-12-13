@@ -311,7 +311,7 @@ export class SingUpUser extends React.Component {
 
 							<div className="input-box">
 								<select name="region">
-									<option value="select-region" disabled selected>Select Region...</option>
+									<option value="select-region" disabled selected>Select Role...</option>
 									<option value="applicant">Applicant</option>
 									<option value="company">Company</option>
 								</select>

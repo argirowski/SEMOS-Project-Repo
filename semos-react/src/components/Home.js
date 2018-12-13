@@ -4,24 +4,10 @@ import { NavLink } from "react-router-dom";
 export class Home extends React.Component {
     render() {
         return (
-            <div class="container">
-                <header>
-                    <div id="app-name">
-                        <h1>
-                            CV <span>Generator</span>
-                        </h1>
-                    </div>
-                    <nav>
-                        <ul>
-                            <li><a href="#">home</a></li>
-                            <li><a href="#">about</a></li>
-                            <li><a href="#">log in</a></li>
-                        </ul>
-                    </nav>
-                </header>
+            <div className="container">
 
                 <section id="app-info">
-                    <div class="container">
+                    <div className="container">
                         <h1>
                             Welcome to the coolest CV-related App
                         </h1>
@@ -30,7 +16,7 @@ export class Home extends React.Component {
                 </section>
 
                 <section id="register-section">
-                    <div class="container">
+                    <div className="container">
                         <h1>
                             Still do not have a profile !?!?! Please sign up accordingly...
                         </h1>
@@ -40,21 +26,21 @@ export class Home extends React.Component {
                 </section>
 
                 <footer>
-                    <div class="footer-container">
-                        <div class="footer">
-                            <div class="footer-content">
-                                <div class="footer-content-wrapper">
-                                    <div class="footer-features">
+                    <div className="footer-container">
+                        <div className="footer">
+                            <div className="footer-content">
+                                <div className="footer-content-wrapper">
+                                    <div className="footer-features">
                                         <h2>Companies</h2>
                                         <p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
                                     </div>
-                                    <div class="footer-features">
+                                    <div className="footer-features">
                                         <h2>Users</h2>
                                         <p>
                                             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
                                                                     </p>
                                     </div>
-                                    <div class="footer-features">
+                                    <div className="footer-features">
                                         <h2>About Us</h2>
                                         <p>
                                             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
@@ -66,8 +52,8 @@ export class Home extends React.Component {
 
 
                         </div>
-                        <div class="footer-bottom">
-                            <div class="footer-bottom-content">
+                        <div className="footer-bottom">
+                            <div className="footer-bottom-content">
 
                             </div>
                         </div>
