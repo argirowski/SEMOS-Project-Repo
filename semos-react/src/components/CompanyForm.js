@@ -1,33 +1,194 @@
 import React from 'react';
 
 export class CompanyForm extends React.Component {
-    render() {
+    constructor() {
+        super()
+        this.state = {
+                companyname: '',
+                established: '',
+                email: '',
+                companywebsite: '',
+                telephonenumber: '',
+                city: '',
+                zipcode: '',
+                address: '',
+                industry: '',
+                scopeofwork: '',
+                numberofemployess: '',
+                expectedhirings: '',
+                companyvision: '',
+                portfolio: '',
+                hr: '',
+                amenities: '',
+                currentopenings: '',
+                button: ''
+        }
+        this.onCompanyNameChange = this.onCompanyNameChange.bind(this);
+        this.onEstablishedChange = this.onEstablishedChange.bind(this);
+        this.onEmailChange = this.onEmailChange.bind(this);
+        this.onCompanyWebsiteChange = this.onCompanyWebsiteChange.bind(this);
+        this.onTelephoneNumberChange = this.onTelephoneNumberChange.bind(this);
+        this.onCityChange = this.onCityChange.bind(this);
+        this.onZipCodeChange = this.onZipCodeChange.bind(this);
+        this.onAddressChange = this.onAddressChange.bind(this);
+        this.onIndustryChange = this.onIndustryChange.bind(this);
+        this.onScopeOfWorkChange = this.onScopeOfWorkChange.bind(this);
+        this.onNumberOfEmployessChange = this.onNumberOfEmployessChange.bind(this);
+        this.onExpectedHiringsChange = this.onExpectedHiringsChange.bind(this);
+        this.onCompanyVisionChange = this.onCompanyVisionChange.bind(this);
+        this.onPortfolioChange = this.onPortfolioChange.bind(this);
+        this.onProgramsChange = this.onProgramsChange.bind(this);
+        this.onHrChange = this.onHrChange.bind(this);
+        this.onAmenitiesChange = this.onAmenitiesChange.bind(this);
+        this.onCurrentOpeningsChange = this.onCurrentOpeningsChange.bind(this);
+        this.onButtonClick = this.onButtonClick.bind(this);
+    }
+
+    onCompanyNameChange(e) {
+        this.setState({
+            companyname: e.target.value
+        });
+    }
+    onEstablishedChange(e) {
+        this.setState({
+            established: e.target.value
+        });
+    }
+    onEmailChange(e) {
+        this.setState({
+            email: e.target.value
+        });
+    }
+    onCompanyWebsiteChange(e) {
+        this.setState({
+            companywebsite: e.target.value
+        });
+    }
+    onTelephoneNumberChange(e) {
+        this.setState({
+            telephonenumber: e.target.value
+        });
+    }
+    onCityChange(e) {
+        this.setState({
+            city: e.target.value
+        });
+    }
+    onZipCodeChange(e) {
+        this.setState({
+            zipcode: e.target.value
+        });
+    }
+    onAddressChange(e) {
+        this.setState({
+            address: e.target.value
+        });
+    }
+    onIndustryChange(e) {
+        this.setState({
+            industry: e.target.value
+        });
+    }
+    onScopeOfWorkChange(e) {
+        this.setState({
+            scopeofwork: e.target.value
+        });
+    }
+    onNumberOfEmployessChange(e) {
+        this.setState({
+            numberofemployess: e.target.value
+        });
+    }
+    onExpectedHiringsChange(e) {
+        this.setState({
+            expectedhirings: e.target.value
+        });
+    }
+    onCompanyVisionChange(e) {
+        this.setState({
+            companyvision: e.target.value
+        });
+    }
+    onPortfolioChange(e) {
+        this.setState({
+            portfolio: e.target.value
+        });
+    }
+
+    onProgramsChange(e) {
+        this.setState({
+            programs: e.target.value
+        });
+    }
+    onHrChange(e) {
+        this.setState({
+            hr: e.target.value
+        });
+    }
+    onAmenitiesChange(e) {
+        this.setState({
+            amenities: e.target.value
+        });
+    }
+    onCurrentOpeningsChange(e) {
+        this.setState({
+            currentopenings: e.target.value
+        });
+    }
+    onButtonClick() {
+        var data = {
+            companyname: this.state.companyname,
+            established: this.state.established,
+            email: this.state.email,
+            companywebsite: this.state.companywebsite,
+            telephonenumber: this.state.telephonenumber,
+            city: this.state.city,
+            zipcode: this.state.zipcode,
+            address: this.state.address,
+            industry: this.state.industry,
+            scopeofwork: this.state.scopeofwork,
+            numberofemployess: this.state.numberofemployess,
+            expectedhirings: this.state.expectedhirings,
+            companyvision: this.state.companyvision,
+            portfolio: this.state.portfolio,
+            programs: this.state.programs,
+            hr: this.state.hr,
+            amenities: this.state.amenities,
+            currentopenings: this.state.currentopenings,
+        };
+
+        fetch('')
+    
+    render()
         return (
             <div class="company-details-form">
-            <div class="company-icon-div">
-                <img src={require("../assets/images/company-logo.png")} class="company-icon" />
-            </div>
+                <div class="company-icon-div">
+                    <img src={require("../assets/images/company-logo.png")} class="company-icon" />
+                </div>
                 <h1>
-                    Fill In Details for Your Company
-	        </h1>
+                    Company form
+	            </h1>
+                <br />
 
                 <form>
                     <p>Company Name</p>
-                    <input type="text" name="company-name" placeholder="Name of The Company" />
+                    <input type="text" onChange={this.onCompanyNameChange} value={this.state.companyname} />
 
                     <p>Established</p>
-                    <input type="text" name="established" placeholder="Year is was established" />
+                    <input type="text" onChange={this.onEstablishedChange} value={this.state.established} />
 
-                    <p>Email:</p>
-                    <input type="email" name="email" placeholder="Company Email Address" required />
+                    <p>Email</p>
+                    <input type="email" onChange={this.onEmailChange} value={this.state.email} required />
 
-                    <p>Company Website:</p>
-                    <input type="url" placeholder="https://example.com" required />
+                    <p>Company Website</p>
+                    <input type="url" onChange={this.onCompanyWebsiteChange} value={this.state.companywebsite} required />
 
                     <p>Telephone Number</p>
-                    <input type="text" name="phone" placeholder="Your Telephone Number" />
+                    <input type="text" onChange={this.onTelephoneNumberChange} value={this.state.telephonenumber} />
+                    <br />
 
                     <p class="section">Company Location</p>
+                    <br />
 
                     <div className="input-box">
                         <select id="country" name="country">
@@ -284,52 +445,53 @@ export class CompanyForm extends React.Component {
                     </div>
 
                     <p>City</p>
-                    <input type="text" name="city" placeholder="The City Where the Company is Located" />
+                    <input type="text" onChange={this.onCityChange} value={this.state.citychange} />
 
 
                     <p>ZIP Code</p>
-                    <input type="text" name="zip-code" placeholder="ZIP Code" />
+                    <input type="text" onChange={this.onZipCodeChange} value={this.state.zipcode} />
 
-                    <p>Address:</p>
-
-                    <input type="text" name="address" placeholder="Company Address" />
+                    <p>Address</p>
+                    <input type="text" onChange={this.onAddressChange} value={this.state.address} />
+                    <br />
 
                     <p class="section">Company Info</p>
+                    <br />
 
                     <p>Industry</p>
-                    <input type="text" name="industry" placeholder="Company Industry" />
+                    <input type="text" onChange={this.onIndustryChange} value={this.state.industry} />
 
                     <p>Scope of Work</p>
-                    <input type="text" name="scope-of-work" placeholder="Scope of Work" />
+                    <input type="text" onChange={this.onScopeOfWorkChange} value={this.state.scopeofwork} />
 
                     <p>Number of Employees</p>
-                    <input type="text" name="num-of-employees" placeholder="Number of Employees" />
+                    <input type="text" onChange={this.onNumberOfEmployessChange} value={this.state.numberofemployess} />
 
                     <p>Expected Hirings</p>
-                    <input type="text" name="expected-hirings" placeholder="Expected Hirings" />
+                    <input type="text" onChange={this.onExpectedHiringsChange} value={this.state.expectedhirings} />
 
                     <p>Company Vision</p>
-                    <textarea id="company-vision" name="company-vision" rows="5" cols="20">
+                    <textarea id="company-vision" onChange={this.onCompanyVisionChange} value={this.state.companyvision} >
                     </textarea>
 
                     <p>Portfolio</p>
-                    <input type="text" name="tags" placeholder="Description Tags" />
+                    <input type="text" onChange={this.onPortfolioChange} value={this.state.portfolio} />
+                    <br />
 
                     <p class="section">Opportunities</p>
+                    <br />
 
                     <p>Programs</p>
-                    <input type="text" name="programs" placeholder="Company Programs" />
+                    <input type="text" onChange={this.onProgramsChange} value={this.state.programs} />
                     <p>HR</p>
-                    <input type="text" name="hr" placeholder="HR" />
+                    <input type="text" onChange={this.onHrChange} value={this.state.hr} />
                     <p>Amenities</p>
-                    <input type="text" name="amenities" placeholder="Amenities" />
+                    <input type="text" onChange={this.onAmenitiesChange} value={this.state.amenities} />
                     <p>Current Openings</p>
-                    <input type="text" name="current-openings" placeholder="Current Openings" /> <br />
+                    <input type="text" onChange={this.onCurrentOpeningsChange} value={this.state.currentopenings} p />
+                    <br />
 
-                    <button id="create-company">Press To Create Company Profile</button>
-
-
-
+                    <button id="create-company" onClick={this.onButtonClick}>Press To Create Company Profile</button>
                 </form>
             </div>
         )
