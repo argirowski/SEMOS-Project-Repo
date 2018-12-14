@@ -20,7 +20,7 @@ export class Home extends React.Component {
                         <h1>
                             Still do not have a profile !?!?! Please sign up accordingly...
                         </h1>
-                        <NavLink to="/register">Sign Up</NavLink>
+                        <NavLink to="/register-user">Sign Up</NavLink>
                         {/* <NavLink to="/register-company">Sign Up As Company</NavLink> */}
                     </div>
                 </section>
