@@ -17,7 +17,7 @@ export class App extends React.Component {
 
                 <Route exact path="/" component={Home} />
                 <Route path="/login" component={Login} />
-                <Route path="/CompanyForm" component={CompanyForm} />
+                <Route path="/company-form" component={CompanyForm} />
                 <Route path="/register-user" component= {SingUpUser} />
                 <Route path="/cv-form" component={CVForm}/>
             </div>

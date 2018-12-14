@@ -16,14 +16,16 @@ export class SingUpUser extends React.Component {
 			address: ""
 		}
 
-		this.onChange = this.onChange.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 		this.submitForm = this.submitForm.bind(this);
 	}
 
-	onChange(e) {
+	handleChange(e) {
         this.setState({
 			[e.target.name]: e.target.value
-        });
+		});
+		
+		console.log(this.state);
 	}
 
 	submitForm(e) {
@@ -46,12 +48,22 @@ export class SingUpUser extends React.Component {
             body: JSON.stringify(user), 
 		})
 		.then(res => {
-		console.log(res);
-		if(this.state.type === "Applicant" && res.status == 201) {
-			this.props.history.push('/cv-form');
-		}else{
-			this.props.history.push('/');
-		}
+			console.log(res);
+			switch(this.state.type) {
+				case 'applicant':
+					this.props.history.push('/cv-form');
+				break;
+				case 'company':
+					this.props.history.push('/company-form');
+				break;
+				default:
+					this.props.history.push('/');
+			}
+			// if(this.state.type === "applicant" && res.status == 201) {
+			// 	this.props.history.push('/cv-form');
+			// }else{
+			// 	this.props.history.push('/');
+			// }
 		})
 		.catch((error) => {
             console.error('Could not sign up user', error);
@@ -61,7 +73,7 @@ export class SingUpUser extends React.Component {
 
 	render() {
 		return (
-			<div className="forms-container">
+			<div className="forms-container" >
 			
 				<div className="sign-up-box">
 					<div className="top-input-box">
@@ -71,14 +83,14 @@ export class SingUpUser extends React.Component {
 						<p className="section">User type</p>
 
 						<div className="input-box">
-							<select name="region" onChange={this.handleChange}>
+							<select name="type" onChange={this.handleChange}>
 								<option value="select-type" >Select User Type...</option>
 								<option value="applicant">Applicant</option>
 								<option value="company">Company</option>
 							</select>
 							<span><i className="fas fa-compass"></i></span>
 						</div>
-						<form>
+						{/* <form> */}
 							<div className="input-box">
 								<input type="text" onChange={this.handleChange} name="first_name" placeholder="Your First Name" />
 								<span><i className="fas fa-file-signature"></i></span>
@@ -125,7 +137,7 @@ export class SingUpUser extends React.Component {
 							</div>
 
 							<input type="submit" onClick={this.submitForm} value="Click Here To Register" />
-						</form>
+						{/* </form> */}
 					</div>
 				</div>
 			</div>
