@@ -2,9 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var jwt = require('express-jwt');
 var fileUpload = require('express-fileupload');
-// var fs = require('fs');
 
-// var conf = require("./utils/config");
 var mongodb = require('./db/mongodb');
 
 var root = require('./handlers/root');
@@ -33,9 +31,11 @@ app.use(jwt({
 
 app.use(fileUpload({
     limits: {
-        fileSize: 3000000 //Bytes = 3MB
+        fileSize: 1000000 //Bytes = 1MB
     }
 }));
+
+// Routes
 
 app.get('/', root);
 app.get('/current', users.getCurrentUserById); //For testing purposes.
@@ -43,8 +43,7 @@ app.get('/current', users.getCurrentUserById); //For testing purposes.
 app.post('/auth/login', auth.login);
 app.get('/auth/logout', auth.logout);
 
-app.get('/users/dashboard', users.getCurrentUserById); //User dashboard, where a search form and results are shown, and edit/delete buttons etc.
-
+app.get('/users/dashboard', users.getCurrentUserById); //User dashboard: consists of search label and results section; edit/delete buttons etc.
 app.get('/users', users.getAllUsers);
 app.post('/users', users.createUser);
 app.get('/users/:id', users.getUserById);
@@ -57,16 +56,6 @@ app.get('/cvs/:id', cvs.getCVById);
 app.delete('/cvs/:id', cvs.deleteCVById);
 app.put('/cvs/:id', cvs.updateCVById);
 app.get('/search/cvs', cvs.getCVByTag);
-
-// Route /cvs/findbytags doesn't work. It has to do with validation. Error shown below:
-// {
-//     "message": "Cast to ObjectId failed for value \"findcvsbytags\" at path \"_id\" for model \"cvs\"",
-//     "name": "CastError",
-//     "stringValue": "\"findcvsbytags\"",
-//     "kind": "ObjectId",
-//     "value": "findcvsbytags",
-//     "path": "_id"
-// }
 
 app.get('/companies', companies.getAllCompanies);
 app.post('/companies', companies.createCompany); 
@@ -83,13 +72,5 @@ app.use((err, req, res, next) => {
         res.status(401).send('Invalid token.');
     }
 });
-
-// conf.loadConfig();
-// setTimeout(() => {
-//     console.log(conf.getConfig().db.host);
-//     console.log(conf.getConfig().db.port);
-//     console.log(conf.getConfig().db.username);
-//     console.log(conf.getConfig().db.password);
-// }, 1000);
 
 app.listen(80);

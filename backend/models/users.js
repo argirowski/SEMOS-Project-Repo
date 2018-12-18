@@ -8,13 +8,7 @@ var Users = mongoose.model(
         "email": String,
         "password": String,
         "type": String,
-        "registration_date": {type: Date, default: Date.now},
-        "location": {
-            "country": String,
-            "city": String,
-            "region": String,
-            "address": String
-        }
+        "registration_date": {type: Date, default: Date.now}
     })
 );
 

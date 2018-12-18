@@ -5,6 +5,7 @@ var users = require('../models/users');
 var validatorSchema = require('../validators/users');
 let v = new validator();
 
+// Retrieve all users from database.
 var getAllUsers = (req, res) => {
     users.getAllUsers((err, data) => {
         if(err){
@@ -15,6 +16,7 @@ var getAllUsers = (req, res) => {
     });
 };
 
+// Retrieve user from database by _id.
 var getUserById = (req, res) => {
     var id = req.params.id;
     users.getUserById(id, (err, data) => {
@@ -26,6 +28,7 @@ var getUserById = (req, res) => {
     });
 };
 
+// Retrieve user from database by type (applicant / company).
 var getUserByType = (req, res) => {
     var userType = req.body.type;
     users.getUserByType(userType, (err, data) => {
@@ -37,6 +40,7 @@ var getUserByType = (req, res) => {
     });
 };
 
+// Validate if required fields are filled, check if email is already in database, encrypt password, add user to database.
 var createUser = (req, res) => {
     var valid = v.validate(req.body, validatorSchema.userCreate);
     if(valid === true) {
@@ -66,18 +70,7 @@ var createUser = (req, res) => {
     }
 };
 
-var updateUserById = (req, res) => {
-    var id = req.user.id;
-    var userData = req.body;
-    users.updateUserById(id, userData, (err) => {
-        if(err){
-            res.status(500).send(err)
-        } else {
-            res.status(200).send("User info updated.");
-        }
-    });
-};
-
+// Update user in database by _id.
 var updateUserById = (req, res) => {
     var id = req.user.id;
     var userData = req.body;
@@ -100,6 +93,7 @@ var updateUserById = (req, res) => {
     });
 };
 
+// Delete user in database by _id.
 var deleteUserById = (req, res) => {
     var id = req.user.id;
     users.deleteUserById(id, (err) => {
@@ -111,6 +105,7 @@ var deleteUserById = (req, res) => {
     });
 };
 
+// Retrieve currently logged in user by _id.
 var getCurrentUserById = (req, res) => {
     var id = req.user.id; 
     users.getUserById(id, (err, data) => {

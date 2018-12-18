@@ -6,6 +6,9 @@ var users = require('../models/users');
 var validatorSchema = require('../validators/users');
 var v = new validator();
 
+// Get user from database by email, validate if email exists. Compare password, and get JSON Web Token by entering user data and secret code as parameters.
+// Token is retrieved and used as: "Bearer " plus the token.
+
 var login = (req, res) => {
     var valid = v.validate(req.body, validatorSchema.userLogin);
     if (valid === true) {

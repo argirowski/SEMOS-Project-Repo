@@ -4,6 +4,7 @@ var companies = require('../models/companies');
 var validatorSchema = require('../validators/companies');
 var v = new validator();
 
+// Validate if required fields are filled, format the dates, associate company profile in database with current user, add company to database.
 var createCompany = (req, res) => {
     var valid = v.validate(req.body, validatorSchema.companyCreate);
     if(valid === true) {
@@ -25,6 +26,7 @@ var createCompany = (req, res) => {
     }
 };
 
+// Retrieve all companies from database.
 var getAllCompanies = (req, res) => {
     companies.getAllCompanies((err, data) => {
         if(err){
@@ -35,6 +37,7 @@ var getAllCompanies = (req, res) => {
     });
 };
 
+// Retrieve company from database by its _id.
 var getCompanyById = (req, res) => {
     var id = req.params.id;
     companies.getCompanyById(id, (err, data) => {
@@ -46,6 +49,7 @@ var getCompanyById = (req, res) => {
     });
 };
 
+// Retrieve company from database by userId key/value in company model (id of user that created the company profile).
 var getCompanyByUserId = (req, res) => {
     var id = req.params.id;
     companies.getCompanyByUserId(id, (err, data) => {
@@ -57,6 +61,7 @@ var getCompanyByUserId = (req, res) => {
     });
 };
 
+// Retrieve company from database by its tags key/value.
 var getCompanyByTag = (req, res) => {
     var tags = [];
     tags = req.query.tags.split(' ');
@@ -69,6 +74,7 @@ var getCompanyByTag = (req, res) => {
     });
 };
 
+// Update company in database by its _id.
 var updateCompanyById = (req, res) => {
     companies.getCompanyByUserId(req.user.id, (err, company) => {
         if (err) {
@@ -91,6 +97,7 @@ var updateCompanyById = (req, res) => {
     });
 };
 
+// Delete company in database by its _id.
 var deleteCompanyById = (req, res) => {
     companies.getCompanyByUserId(req.user.id, (err, company) => {
         if (err) {
@@ -111,6 +118,7 @@ var deleteCompanyById = (req, res) => {
     });
 };
 
+// Format the date for entry in database as ISOString.
 var formatDates = (companyData) => {
     if(companyData.established != undefined && companyData.established != null){
         companyData.established = new Date(companyData.established);

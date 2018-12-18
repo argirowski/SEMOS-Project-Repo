@@ -7,7 +7,7 @@ var allowedDocumentTypes = ['application/msword', 'application/vnd.openxmlformat
 var uploadProfileImage = (req, res) => {
     if (req.files.doc.mimetype.split('/')[0] == 'image'){
         var fileChunks = req.files.doc.name.split('.');
-        var imgName = req.recruit.id + '.' + fileChunks[fileChunks.length - 1];
+        var imgName = req.user.id + '.' + fileChunks[fileChunks.length - 1];
         req.files.doc.mv(bucketProfileImg + imgName, (err) => {
             if(err) {
                 return res.status(500).send('Could not upload your profile image. ' + err);
@@ -22,7 +22,7 @@ var uploadProfileImage = (req, res) => {
 
 var uploadDocument = (req, res) => {
     if (allowedDocumentTypes.indexOf(req.files.doc.mimetype) > -1) {
-        var docName = req.recruit.id + '_' + req.files.doc.name;
+        var docName = req.user.id + '_' + req.files.doc.name;
         req.files.doc.mv(bucketDocuments + docName, (err) => {
             if(err) {
                 return res.status(500).send('Could not upload your document. ' + err);

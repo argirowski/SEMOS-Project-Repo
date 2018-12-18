@@ -4,6 +4,7 @@ var cvs = require('../models/cvs');
 var validatorSchema = require('../validators/cvs');
 var v = new validator();
 
+// Validate if required fields are filled, format the dates, associate CV profile in database with current user, add CV to database.
 var createCV = (req, res) => {
     var valid = v.validate(req.body, validatorSchema.cvCreate);
     if(valid === true) {
@@ -25,6 +26,7 @@ var createCV = (req, res) => {
     }
 };
 
+// Retrieve all CVs from database.
 var getAllCVs = (req, res) => {
     cvs.getAllCVs((err, data) => {
         if(err) {
@@ -35,6 +37,7 @@ var getAllCVs = (req, res) => {
     });
 };
 
+// Retrieve CV from database by its _id.
 var getCVById = (req, res) => {
     var id = req.params.id;
     cvs.getCVById(id, (err, data) => {
@@ -46,6 +49,7 @@ var getCVById = (req, res) => {
     });
 };
 
+// Retrieve CV from database by userId key/value in CV model (id of user that created the CV profile).
 var getCVByUserId = (req, res) => {
     var id = req.params.id;
     cvs.getCVByUserId(id, (err, data) => {
@@ -57,6 +61,7 @@ var getCVByUserId = (req, res) => {
     });
 };
 
+// Retrieve CV from database by its tags key/value.
 var getCVByTag = (req, res) => {
     var tags = [];
     tags = req.query.tags.split(' ');
@@ -69,6 +74,7 @@ var getCVByTag = (req, res) => {
     });
 };
 
+// Update CV in database by its _id.
 var updateCVById = (req, res) => {
     cvs.getCVByUserId(req.user.id, (err, cv) => {
         if (err) {
@@ -91,6 +97,7 @@ var updateCVById = (req, res) => {
     });
 };
 
+// Delete CV in database by its _id.
 var deleteCVById = (req, res) => {
     cvs.getCVByUserId(req.user.id, (err, cv) => {
         if (err) {
@@ -112,6 +119,7 @@ var deleteCVById = (req, res) => {
     });
 };
 
+// Format the date for entry in database as ISOString.
 var formatDates = (cvData) => {
     if(cvData.birth_date != undefined && cvData.birth_date != null){
         cvData.birth_date = new Date(cvData.birth_date);
