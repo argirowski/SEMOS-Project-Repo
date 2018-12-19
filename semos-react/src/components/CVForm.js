@@ -35,22 +35,22 @@ export class CVForm extends React.Component {
                 <h1>
                     Create Your CV
 		</h1>
-                <form>
+                <form onSubmit = {this.handleSubmit} noValidate>
                     <p>First Name</p>
-                    <input type="text" name="first-name" placeholder="Your First Name" />
+                    <input type="text" name="first-name" placeholder="Your First Name" noValidate onChange = {this.handleChange}/>
 
 
                     <p>Last Name</p>
-                    <input type="text" name="last-name" placeholder="Your Last Name" />
+                    <input type="text" name="last-name" placeholder="Your Last Name" noValidate onChange = {this.handleChange}/>
 
                     <p>Birth Date:</p>
-                    <input type="date" name="birth-date" />
+                    <input type="date" name="birth-date" noValidate onChange = {this.handleChange}/>
 
                     <p>Email:</p>
-                    <input type="text" name="email" placeholder="Your Email Address" />
+                    <input type="text" name="email" placeholder="Your Email Address" noValidate onChange = {this.handleChange}/>
 
                     <p>Telephone Number</p>
-                    <input type="text" name="phone" placeholder="Your Telephone Number" />
+                    <input type="text" name="phone" placeholder="Your Telephone Number" noValidate onChange = {this.handleChange}/>
 
                     <p class="section">Residence</p>
 
