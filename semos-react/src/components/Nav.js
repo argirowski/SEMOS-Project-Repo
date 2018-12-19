@@ -8,18 +8,18 @@ export class Nav extends React.Component{
                 <header>
                     <div id="app-name">
                         <h1>
-                            CV <span>Generator</span>
+                            Recruiter <span>App</span>
                         </h1>
                     </div>
                     <nav>
                         <ul>
                             <NavLink to="/">Home</NavLink>
-                            <li><a href="#">about</a></li>
-                            <NavLink to="/login">Login</NavLink>
+                            <li><a href="#">About</a></li>
+                            <NavLink to="/login">Log in</NavLink>
                         </ul>
                     </nav>
                 </header>
-        </div>  
+            </div>  
         )
     }
 }

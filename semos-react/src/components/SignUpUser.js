@@ -1,9 +1,9 @@
 import React from "react";
 import { SelectCountry } from "./SelectCountry";
 
-export class SingUpUser extends React.Component {
+export class SignUpUser extends React.Component {
 	constructor() {
-		super()
+		super();
 		this.state = {
 			type: "",
 			first_name: "",
@@ -11,11 +11,8 @@ export class SingUpUser extends React.Component {
 			email: "",
 			password: "",
 			country: "",
-			city: "",
-			region: "",
-			address: ""
+			city: ""
 		}
-
 		this.handleChange = this.handleChange.bind(this);
 		this.submitForm = this.submitForm.bind(this);
 	}
@@ -24,7 +21,6 @@ export class SingUpUser extends React.Component {
         this.setState({
 			[e.target.name]: e.target.value
 		});
-		
 		console.log(this.state);
 	}
 
@@ -36,16 +32,14 @@ export class SingUpUser extends React.Component {
 			email: this.state.email,
 			password: this.state.password,
 			country: this.state.country,
-			city: this.state.city,
-			region: this.state.region,
-			address: this.state.address
+			city: this.state.city
 		};
 		fetch('https://jsonplaceholder.typicode.com/users', {
             method: "POST", 
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
             },
-            body: JSON.stringify(user), 
+            body: JSON.stringify(user)
 		})
 		.then(res => {
 			console.log(res);
@@ -66,43 +60,40 @@ export class SingUpUser extends React.Component {
 			// }
 		})
 		.catch((error) => {
-            console.error('Could not sign up user', error);
+            console.error('Could not sign up the user.', error);
         })
 	}
 	
-
 	render() {
 		return (
 			<div className="forms-container" >
-			
 				<div className="sign-up-box">
 					<div className="top-input-box">
-						<img src={require("../assets/images/sign-up.png")} className="sign-up-logo" />
-						<p className="section">Basic info</p>
-
-						<p className="section">User type</p>
+						<img src={require("../assets/images/sign-up.png")} className="sign-up-logo" alt=""/>
+						<p className="section">Basic Info</p>
 
 						<div className="input-box">
 							<select name="type" onChange={this.handleChange}>
-								<option value="select-type" >Select User Type...</option>
+								<option value="select-type" >Select User Type</option>
 								<option value="applicant">Applicant</option>
 								<option value="company">Company</option>
 							</select>
 							<span><i className="fas fa-compass"></i></span>
 						</div>
+
 						{/* <form> */}
 							<div className="input-box">
-								<input type="text" onChange={this.handleChange} name="first_name" placeholder="Your First Name" />
+								<input type="text" onChange={this.handleChange} name="first_name" placeholder="Your first name" />
 								<span><i className="fas fa-file-signature"></i></span>
 							</div>
 
 							<div className="input-box">
-								<input type="text" onChange={this.handleChange}  name="last_name" placeholder="Your Last Name" />
+								<input type="text" onChange={this.handleChange}  name="last_name" placeholder="Your last name" />
 								<span><i className="fas fa-file-signature"></i></span>
 							</div>
 
 							<div className="input-box">
-								<input type="email" onChange={this.handleChange} name="email" placeholder="Your Email Address" required />
+								<input type="email" onChange={this.handleChange} name="email" placeholder="Your email" required />
 								<span><i className="fas fa-envelope"></i></span>
 							</div>
 
@@ -116,27 +107,11 @@ export class SingUpUser extends React.Component {
 							<SelectCountry />
 
 							<div className="input-box">
-								<input type="text" onChange={this.handleChange} name="city" placeholder="City Of Residence" />
+								<input type="text" onChange={this.handleChange} name="city" placeholder="City" />
 								<span><i className="fas fa-city"></i></span>
 							</div>
 
-							<div className="input-box">
-								<select id="region" name="region">
-									<option value="select-region">Select Region...</option>
-									<option value="NO">North</option>
-									<option value="SO">South</option>
-									<option value="EA">East</option>
-									<option value="WE">West</option>
-								</select>
-								<span><i className="fas fa-compass"></i></span>
-							</div>
-
-							<div className="input-box">
-								<input type="text" onChange={this.handleChange} name="address" placeholder="Address of Residence" />
-								<span><i className="fas fa-address-card"></i></span>
-							</div>
-
-							<input type="submit" onClick={this.submitForm} value="Click Here To Register" />
+							<input type="submit" onClick={this.submitForm} value="Sign Up" />
 						{/* </form> */}
 					</div>
 				</div>
