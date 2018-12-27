@@ -814,19 +814,22 @@ h2 {
 .log-in-box input[type="submit"] {
 		border: none;
 		outline: none;
-		height: 55px;
+		height: 50px;
 		width: 100%;
 		font-size: 1.2em;
 		background: #009fe3;
 		color: #fff;
-		border-radius: 5px;
-		text-align: center;
+		border-radius: 20px;
 		font-weight: bold;
-		margin: 40px 0px 0px 0px;
-
+		margin: 90px 0px 0px 0px;
 }
 
 .log-in-box input[type="submit"]:hover {
     cursor: pointer;
-    background: rgba(247, 202, 24, 1);
+		/* background: rgba(247, 202, 24, 1); */
+		background: #008fe3
+}
+
+form .error-warning {
+  color: red
 }
