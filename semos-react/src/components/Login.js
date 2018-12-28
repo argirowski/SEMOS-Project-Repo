@@ -17,7 +17,7 @@ export class Login extends React.Component {
     let fields = this.state.fields
     fields[e.target.name] = e.target.value;
     this.setState({
-      fields
+      fields: fields
     });
   }
 
@@ -87,7 +87,7 @@ export class Login extends React.Component {
           <input value={this.state.fields.password} onChange = {this.handleChange} placeholder = "Password" name="password" type="text"/>
           <div className="error-warning">{this.state.errors.password}</div>
         </div>
-        <input onSubmit={this.resumeData} type="submit" value="GO!"/>
+        <input type="submit" value="GO!"/>
         </form>
         </div>
         </div>
